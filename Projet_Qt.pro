@@ -28,17 +28,23 @@ SOURCES += \
         mainwindow.cpp \
     user.cpp \
     logincontroller.cpp \
-    login.cpp
+    login.cpp \
+    addclient.cpp \
+    addperson.cpp
 
 HEADERS += \
         mainwindow.h \
     user.h \
     logincontroller.h \
-    login.h
+    login.h \
+    addclient.h \
+    addperson.h
 
 FORMS += \
         mainwindow.ui \
-    login.ui
+    login.ui \
+    addclient.ui \
+    addperson.ui
 
 RESOURCES += \
     icons.qrc

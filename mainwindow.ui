@@ -36,7 +36,6 @@
     </widget>
     <addaction name="menuAdd"/>
     <addaction name="separator"/>
-    <addaction name="actionQuit"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -89,11 +88,6 @@
    </property>
    <property name="text">
     <string>Add User</string>
-   </property>
-  </action>
-  <action name="actionQuit">
-   <property name="text">
-    <string>Quit</string>
    </property>
   </action>
  </widget>
