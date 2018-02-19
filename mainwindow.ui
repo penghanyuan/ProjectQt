@@ -6,20 +6,46 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
-    <height>460</height>
+    <width>970</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>900</width>
+        <height>600</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>661</width>
+     <width>970</width>
      <height>22</height>
     </rect>
    </property>
@@ -31,12 +57,12 @@
      <property name="title">
       <string>Add</string>
      </property>
-     <addaction name="actionAdd_Client_2"/>
-     <addaction name="actionAdd_Person_2"/>
+     <addaction name="actionAdd_Client"/>
+     <addaction name="actionAdd_Person"/>
     </widget>
     <addaction name="menuAdd"/>
     <addaction name="separator"/>
-    <addaction name="actionQuit"/>
+    <addaction name="actionLeave"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -54,16 +80,19 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionAdd_Client"/>
-   <addaction name="actionAdd_User"/>
+   <addaction name="actionAdd_Client_Icon"/>
+   <addaction name="actionAdd_Person_Icon"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionAdd_Client_2">
+  <action name="actionAdd_Client">
    <property name="text">
     <string>Add Client</string>
    </property>
+   <property name="statusTip">
+    <string>Add Client</string>
+   </property>
   </action>
-  <action name="actionAdd_Person_2">
+  <action name="actionAdd_Person">
    <property name="text">
     <string>Add Person</string>
    </property>
@@ -73,7 +102,7 @@
     <string>Cool</string>
    </property>
   </action>
-  <action name="actionAdd_Client">
+  <action name="actionAdd_Client_Icon">
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/images/client.png</normaloff>:/images/client.png</iconset>
@@ -82,18 +111,27 @@
     <string>Add Client</string>
    </property>
   </action>
-  <action name="actionAdd_User">
+  <action name="actionAdd_Person_Icon">
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/images/user.jpg</normaloff>:/images/user.jpg</iconset>
    </property>
    <property name="text">
+    <string>Add Person</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Person</string>
+   </property>
+   <property name="statusTip">
     <string>Add User</string>
    </property>
+   <property name="font">
+    <font/>
+   </property>
   </action>
-  <action name="actionQuit">
+  <action name="actionLeave">
    <property name="text">
-    <string>Quit</string>
+    <string>Leave</string>
    </property>
   </action>
  </widget>
