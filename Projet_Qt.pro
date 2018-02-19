@@ -33,6 +33,8 @@ SOURCES += \
     person.cpp \
     addclient.cpp \
     addperson.cpp
+    addclient.cpp \
+    addperson.cpp
 
 HEADERS += \
         mainwindow.h \

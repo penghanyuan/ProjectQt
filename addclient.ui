@@ -1,17 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>AddClient</class>
- <widget name="AddClient" class="QDialog">
+ <widget class="QDialog" name="AddClient">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>456</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>351</width>
+     <height>432</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="5" column="0">
+       <widget class="QLabel" name="appointment_date_label">
+        <property name="text">
+         <string>Appointment Date</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="phone_number_txt"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="address_label">
+        <property name="text">
+         <string>Address</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="resource_list_label">
+        <property name="text">
+         <string>Resource List</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="first_name_label">
+        <property name="text">
+         <string>First Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="last_name_label">
+        <property name="text">
+         <string>Last Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QPlainTextEdit" name="comment_txt"/>
+      </item>
+      <item row="8" column="1">
+       <widget class="QLineEdit" name="resource_list_txt"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="appointment_duration_txt"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="first_name_txt"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="postcode_txt"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="priority_label">
+        <property name="text">
+         <string>Priority</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="appointment_duration_label">
+        <property name="text">
+         <string>Appointment Duration</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="city_txt"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="city_label">
+        <property name="text">
+         <string>City</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="address_txt"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="last_name_txt"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="postcode_label">
+        <property name="text">
+         <string>Postcode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="phone_number_label">
+        <property name="text">
+         <string>Phone Number</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="comment_label">
+        <property name="text">
+         <string>Comment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QPushButton" name="submit_btn">
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QPushButton" name="cancel_btn">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+      </item>
+      <item row="7" column="1">
+       <widget class="QSpinBox" name="spinBox">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QScrollBar" name="verticalScrollBar">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>

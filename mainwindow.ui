@@ -62,7 +62,6 @@
     </widget>
     <addaction name="menuAdd"/>
     <addaction name="separator"/>
-    <addaction name="actionLeave"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -127,11 +126,6 @@
    </property>
    <property name="font">
     <font/>
-   </property>
-  </action>
-  <action name="actionLeave">
-   <property name="text">
-    <string>Leave</string>
    </property>
   </action>
  </widget>
