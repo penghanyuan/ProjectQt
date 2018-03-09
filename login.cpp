@@ -17,8 +17,8 @@ void Login::on_connect_clicked()
 {
     QString username = ui->username->text();
     QString password = ui->password->text();
-    LoginController logController;
-    if(logController.verifyLogin(username,password)){
+    AccountController accountController;
+    if(accountController.verifyLogin(username,password)){
         accept();
     }else{
         QMessageBox::warning(this, tr("Waring"),

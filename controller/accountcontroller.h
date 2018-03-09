@@ -2,10 +2,10 @@
 #define LOGINCONTROLLER_H
 
 #include <QString>
-class LoginController
+class AccountController
 {
 public:
-    LoginController();
+    AccountController();
     bool verifyLogin(QString username,QString password);
 };
 

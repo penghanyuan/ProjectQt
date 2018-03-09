@@ -1,11 +1,11 @@
-#include "logincontroller.h"
+#include "accountcontroller.h"
 
-LoginController::LoginController()
+AccountController::AccountController()
 {
 
 }
 
-bool LoginController::verifyLogin(QString username,QString password){
+bool AccountController::verifyLogin(QString username,QString password){
     QString username_db = "admin";
     QString password_db = "password";
     if(username_db == username&&password_db == password){

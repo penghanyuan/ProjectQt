@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    logincontroller.cpp \
     login.cpp \
     addclient.cpp \
     addperson.cpp \
@@ -36,12 +35,17 @@ SOURCES += \
     models/appointment.cpp \
     models/client.cpp \
     models/resource.cpp \
-    models/type.cpp
+    models/type.cpp \
     addclient.cpp \
+    dao/clientdao.cpp \
+    dao/resourcedao.cpp \
+    dao/appointmentdao.cpp \
+    dao/typedao.cpp \
+    dao/accountdao.cpp \
+    controller/accountcontroller.cpp
 
 HEADERS += \
         mainwindow.h \
-    logincontroller.h \
     login.h \
     addclient.h \
     addperson.h \
@@ -51,7 +55,13 @@ HEADERS += \
     models/appointment.h \
     models/client.h \
     models/resource.h \
-    models/type.h
+    models/type.h \
+    dao/clientdao.h \
+    dao/resourcedao.h \
+    dao/appointmentdao.h \
+    dao/typedao.h \
+    dao/accountdao.h \
+    controller/accountcontroller.h
 
 FORMS += \
         mainwindow.ui \

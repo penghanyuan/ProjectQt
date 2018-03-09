@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include "logincontroller.h"
+#include "accountcontroller.h"
 #include "QMessageBox"
 #include <iostream>
 using namespace std;
