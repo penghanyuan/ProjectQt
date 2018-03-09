@@ -70,6 +70,46 @@ void Client::setCli_id(int value)
     cli_id = value;
 }
 
+QString Client::getCli_comment() const
+{
+    return cli_comment;
+}
+
+void Client::setCli_comment(const QString &value)
+{
+    cli_comment = value;
+}
+
+QDate Client::getCli_rdv_date() const
+{
+    return cli_rdv_date;
+}
+
+void Client::setCli_rdv_date(const QDate &value)
+{
+    cli_rdv_date = value;
+}
+
+int Client::getCli_rdv_duration() const
+{
+    return cli_rdv_duration;
+}
+
+void Client::setCli_rdv_duration(int value)
+{
+    cli_rdv_duration = value;
+}
+
+int Client::getCli_priority() const
+{
+    return cli_priority;
+}
+
+void Client::setCli_priority(int value)
+{
+    cli_priority = value;
+}
+
 Client::Client()
 {
 

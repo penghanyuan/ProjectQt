@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <QString>
-
+#include <QDate>
 class Client
 {
 private:
@@ -12,6 +12,11 @@ private:
     QString cli_city;
     QString cli_postcode;
     QString cli_tel;
+    QString cli_comment;
+    QDate cli_rdv_date;
+    int cli_rdv_duration;
+    int cli_priority;
+
 
 public:
     Client();
@@ -29,6 +34,15 @@ public:
     void setCli_tel(const QString &value);
     int getCli_id() const;
     void setCli_id(int value);
+    QString getCli_comment() const;
+    void setCli_comment(const QString &value);
+    QDate getCli_rdv_date() const;
+    void setCli_rdv_date(const QDate &value);
+    int getCli_rdv_duration() const;
+    void setCli_rdv_duration(int value);
+    int getCli_priority() const;
+    void setCli_priority(int value);
+
 };
 
 #endif // CLIENT_H

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QSqlTableModel>
 namespace Ui {
 class MainWindow;
 }
@@ -24,6 +24,7 @@ private slots:
     void on_actionAdd_Person_Icon_triggered();
 
 private:
+    QSqlTableModel *model;
     Ui::MainWindow *ui;
 
 };

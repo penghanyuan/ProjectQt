@@ -2,11 +2,18 @@
 #include "ui_mainwindow.h"
 #include "addclient.h"
 #include "addperson.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    model = new QSqlTableModel(this);
+    model->setTable("TClient");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->select();
+
     ui->setupUi(this);
+    ui->tableView->setModel(model);
     ui->statusBar->showMessage("Your are connected to the system!");
 }
 

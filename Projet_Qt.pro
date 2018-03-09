@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+QT       += sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Projet_Qt
@@ -32,7 +32,9 @@ SOURCES += \
     appointment.cpp \
     person.cpp \
     addclient.cpp \
-    addperson.cpp
+    addperson.cpp \
+    c_init_bd.cpp \
+    connectionsql.cpp
     addclient.cpp \
 
 HEADERS += \
@@ -43,7 +45,9 @@ HEADERS += \
     appointment.h \
     person.h \
     addclient.h \
-    addperson.h
+    addperson.h \
+    c_init_bd.h \
+    connectionsql.h
 
 FORMS += \
         mainwindow.ui \
