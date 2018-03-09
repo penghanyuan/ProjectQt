@@ -36,8 +36,3 @@ ConnectionSQL* ConnectionSQL::getConnection()
     }
     return connectionSQL;
 }
-
-bool ConnectionSQL::disconnect()
-{
-
-}

@@ -12,8 +12,6 @@ private:
     QSqlDatabase db;
     ConnectionSQL();
 public:
-
-    bool disconnect();
     static ConnectionSQL *getConnection();
 
     QSqlDatabase &getDb();

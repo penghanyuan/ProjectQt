@@ -27,5 +27,7 @@ int main(int argc, char *argv[])
        m.show();
        return a.exec();
     }
+    db.close();
+    db.removeDatabase("QSQLITE");
     return 0;
 }

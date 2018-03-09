@@ -28,26 +28,30 @@ SOURCES += \
         mainwindow.cpp \
     logincontroller.cpp \
     login.cpp \
-    client.cpp \
-    appointment.cpp \
-    person.cpp \
     addclient.cpp \
     addperson.cpp \
     c_init_bd.cpp \
-    connectionsql.cpp
+    connectionsql.cpp \
+    models/account.cpp \
+    models/appointment.cpp \
+    models/client.cpp \
+    models/resource.cpp \
+    models/type.cpp
     addclient.cpp \
 
 HEADERS += \
         mainwindow.h \
     logincontroller.h \
     login.h \
-    client.h \
-    appointment.h \
-    person.h \
     addclient.h \
     addperson.h \
     c_init_bd.h \
-    connectionsql.h
+    connectionsql.h \
+    models/account.h \
+    models/appointment.h \
+    models/client.h \
+    models/resource.h \
+    models/type.h
 
 FORMS += \
         mainwindow.ui \
