@@ -10,8 +10,14 @@
     <height>456</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Add Client</string>
   </property>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -157,13 +163,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="QScrollBar" name="verticalScrollBar">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>
