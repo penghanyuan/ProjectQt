@@ -29,7 +29,7 @@ void Login::on_connect_clicked()
         login_username = ui->username->text();
         login_password = ui->password->text();
     }
-    if(logController.verifyLogin(login_username,login_password)){
+    if(accountController.verifyLogin(login_username,login_password)){
         savecfg();
         accept();
     }

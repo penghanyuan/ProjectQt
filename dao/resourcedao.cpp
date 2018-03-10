@@ -11,7 +11,7 @@ bool ResourceDAO::selectAllResources(vector<Resource> &resources)
 {
     TypeDAO typeDAO;
     QSqlQuery query(db);
-    QString strSqlText("SELECT * FROM TRessource");//查询语法
+    QString strSqlText("SELECT * FROM TRessource");
     query.prepare(strSqlText);
     query.exec();
     while ( query.next() ) {
