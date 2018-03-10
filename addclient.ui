@@ -136,14 +136,14 @@
        </widget>
       </item>
       <item row="11" column="0">
-       <widget class="QPushButton" name="submit_btn">
+       <widget class="QPushButton" name="client_submit_btn">
         <property name="text">
          <string>Submit</string>
         </property>
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QPushButton" name="cancel_btn">
+       <widget class="QPushButton" name="client_cancel_btn">
         <property name="text">
          <string>Cancel</string>
         </property>
@@ -168,5 +168,22 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>client_cancel_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>AddClient</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>269</x>
+     <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

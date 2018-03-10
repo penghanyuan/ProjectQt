@@ -20,9 +20,15 @@ public:
 
 private slots:
     void on_connect_clicked();
+    void savecfg();
+    void loadcfg();
+
+
 
 private:
     Ui::Login *ui;
+    QString  login_username;
+    QString  login_password;
 };
 
 #endif // LOGIN_H
