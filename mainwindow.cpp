@@ -25,6 +25,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionAdd_Client_triggered()
 {
     AddClient add_client;
+
+    //add_client.setWindowFlags(add_client.windowFlags()& ~ Qt::WindowMaximizeButtonHint);
     add_client.exec();
 }
 

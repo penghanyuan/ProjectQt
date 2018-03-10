@@ -12,7 +12,7 @@ class AddClient : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddClient(QWidget *parent = 0);
+    explicit AddClient(QDialog *parent = 0);
     ~AddClient();
 
 private:
