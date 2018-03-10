@@ -192,7 +192,7 @@
        </widget>
       </item>
       <item row="7" column="3">
-       <widget class="QPushButton" name="person_submit_btn_2">
+       <widget class="QPushButton" name="person_cancel_btn">
         <property name="text">
          <string>Cancel</string>
         </property>
@@ -217,5 +217,22 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>person_cancel_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>AddPerson</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>286</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
