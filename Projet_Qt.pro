@@ -27,7 +27,6 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     login.cpp \
-    addclient.cpp \
     addperson.cpp \
     c_init_bd.cpp \
     connectionsql.cpp \
@@ -42,7 +41,9 @@ SOURCES += \
     dao/appointmentdao.cpp \
     dao/typedao.cpp \
     dao/accountdao.cpp \
-    controller/accountcontroller.cpp
+    controller/accountcontroller.cpp \
+    controller/resourcescontroller.cpp \
+    controller/clientcontroller.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -61,7 +62,9 @@ HEADERS += \
     dao/appointmentdao.h \
     dao/typedao.h \
     dao/accountdao.h \
-    controller/accountcontroller.h
+    controller/accountcontroller.h \
+    controller/resourcescontroller.h \
+    controller/clientcontroller.h
 
 FORMS += \
         mainwindow.ui \

@@ -7,13 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    model = new QSqlTableModel(this);
-    model->setTable("TClient");
-    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    model->select();
-
+    vector<QStandardItem*> qsi_v_resources;
+    resourceController.getAllResources(qsi_v_resources);
     ui->setupUi(this);
-    ui->tableView->setModel(model);
     ui->statusBar->showMessage("Your are connected to the system!");
 }
 
@@ -26,7 +22,7 @@ void MainWindow::on_actionAdd_Client_triggered()
 {
     AddClient add_client;
 
-    //add_client.setWindowFlags(add_client.windowFlags()& ~ Qt::WindowMaximizeButtonHint);
+    add_client.setWindowFlags(add_client.windowFlags()& ~ Qt::WindowMaximizeButtonHint);
     add_client.exec();
 }
 

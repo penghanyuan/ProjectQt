@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSqlTableModel>
+#include <QSqlQuery>
+#include "controller/resourcescontroller.h"
 namespace Ui {
 class MainWindow;
 }
@@ -24,7 +26,7 @@ private slots:
     void on_actionAdd_Person_Icon_triggered();
 
 private:
-    QSqlTableModel *model;
+    ResourcesController resourceController;
     Ui::MainWindow *ui;
 
 };

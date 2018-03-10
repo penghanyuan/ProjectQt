@@ -3,7 +3,12 @@
 ConnectionSQL* ConnectionSQL::connectionSQL = NULL;
 QSqlDatabase &ConnectionSQL::getDb()
 {
-    this->db = QSqlDatabase::addDatabase("QSQLITE");
+    return db;
+}
+
+ConnectionSQL::ConnectionSQL()
+{
+    db = QSqlDatabase::addDatabase("QSQLITE");
 
     if(db.isValid())
     {
@@ -20,12 +25,6 @@ QSqlDatabase &ConnectionSQL::getDb()
             qDebug() << "Erreur à louverture de la base !\n";
         }
     }
-    return db;
-}
-
-ConnectionSQL::ConnectionSQL()
-{
-
 }
 
 ConnectionSQL* ConnectionSQL::getConnection()

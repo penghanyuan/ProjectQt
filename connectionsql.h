@@ -13,7 +13,11 @@ private:
     ConnectionSQL();
 public:
     static ConnectionSQL *getConnection();
-
+    bool disconnect(){
+        db.close();
+        db.removeDatabase("QSQLITE");
+        return true;
+    };
     QSqlDatabase &getDb();
 };
 
