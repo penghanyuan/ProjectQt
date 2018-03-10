@@ -136,14 +136,14 @@
        </widget>
       </item>
       <item row="11" column="0">
-       <widget class="QPushButton" name="submit_btn">
+       <widget class="QPushButton" name="client_submit_btn">
         <property name="text">
          <string>Submit</string>
         </property>
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QPushButton" name="cancel_btn">
+       <widget class="QPushButton" name="client_cancel_btn">
         <property name="text">
          <string>Cancel</string>
         </property>
