@@ -15,6 +15,9 @@ public:
     explicit AddClient(QDialog *parent = 0);
     ~AddClient();
 
+private slots:
+    void on_client_submit_btn_clicked();
+
 private:
     Ui::AddClient *ui;
 };
