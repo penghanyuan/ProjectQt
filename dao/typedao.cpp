@@ -24,3 +24,27 @@ Type TypeDAO::selectTypeById(int id)
     return type;
 
 }
+
+bool TypeDAO::selectAllType(vector<Type> &types)
+{
+    QSqlQuery query(db);
+    QString strSqlText("SELECT * FROM TType");
+    query.prepare(strSqlText);
+    query.exec();
+    while ( query.next() ) {
+        int id = query.value(0).toInt();
+        QString label = query.value(1).toString();
+        Type type;
+        type.setType_id(id);
+        type.setType_label(label);
+        types.push_back(type);
+    }
+    if(!types.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

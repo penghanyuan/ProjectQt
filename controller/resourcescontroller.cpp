@@ -5,12 +5,15 @@ ResourcesController::ResourcesController()
 
 }
 
-bool ResourcesController::getAllResources(vector<QStandardItem *> &qsi_resources)
+bool ResourcesController::getAllResources(vector<Resource> &resources)
 {
-    vector<Resource> resources;
-    resourceDAO.selectAllResources(resources);
-    for(int i = 0;i<resources.size();i++)
+
+    if(resourceDAO.selectAllResources(resources))
     {
-        cout<<resources.at(i).getRes_firstname().toStdString()<<endl;
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }

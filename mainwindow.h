@@ -5,6 +5,7 @@
 #include <QSqlTableModel>
 #include <QSqlQuery>
 #include "controller/resourcescontroller.h"
+#include "controller/typecontroller.h"
 namespace Ui {
 class MainWindow;
 }
@@ -27,6 +28,7 @@ private slots:
 
 private:
     ResourcesController resourceController;
+    TypeController typeController;
     Ui::MainWindow *ui;
 
 };

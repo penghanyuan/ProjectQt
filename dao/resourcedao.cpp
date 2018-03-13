@@ -36,3 +36,26 @@ bool ResourceDAO::selectAllResources(vector<Resource> &resources)
         return false;
     }
 }
+
+Resource ResourceDAO::selectResourceById(int id)
+{
+    TypeDAO typeDAO;
+    QSqlQuery query(db);
+    QString strSqlText("SELECT * FROM TRessource where Id = ?");
+    query.prepare(strSqlText);
+    query.addBindValue(id);
+    query.exec();
+    Resource r;
+    while ( query.next() ) {
+        int id = query.value(0).toInt();
+        QString lastname = query.value(1).toString();
+        QString firstname = query.value(2).toString();
+        int type_id = query.value(3).toInt();
+        Type type = typeDAO.selectTypeById(type_id);
+        r.setRes_id(id);
+        r.setRes_firstname(firstname);
+        r.setRes_lastname(lastname);
+        r.setRes_type(type);
+    }
+    return r;
+}

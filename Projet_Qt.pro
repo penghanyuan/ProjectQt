@@ -43,7 +43,8 @@ SOURCES += \
     dao/accountdao.cpp \
     controller/accountcontroller.cpp \
     controller/resourcescontroller.cpp \
-    controller/clientcontroller.cpp
+    controller/clientcontroller.cpp \
+    controller/typecontroller.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -64,7 +65,8 @@ HEADERS += \
     dao/accountdao.h \
     controller/accountcontroller.h \
     controller/resourcescontroller.h \
-    controller/clientcontroller.h
+    controller/clientcontroller.h \
+    controller/typecontroller.h
 
 FORMS += \
         mainwindow.ui \

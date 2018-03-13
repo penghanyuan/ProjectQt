@@ -2,6 +2,7 @@
 #define RESOURCESCONTROLLER_H
 #include <iostream>
 #include <vector>
+#include <map>
 #include <QStandardItemModel>
 #include <QItemSelectionModel>
 #include "models/resource.h"
@@ -13,7 +14,7 @@ private:
     ResourceDAO resourceDAO;
 public:
     ResourcesController();
-    bool getAllResources(vector<QStandardItem*>& resources);
+    bool getAllResources(vector<Resource>& resources);
 
 };
 
