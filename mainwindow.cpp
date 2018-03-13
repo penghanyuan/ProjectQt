@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "addclient.h"
 #include "addperson.h"
-
+#include <iostream>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,7 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     vector<Type> v_types;
     QList<QStandardItem*> ql_type;
     ui->setupUi(this);
-    QStandardItemModel * standardModel = new QStandardItemModel(this) ;
+
+    standardModel = new QStandardItemModel(this) ;
     QStandardItem *rootItem = standardModel->invisibleRootItem();
     // get info from DB
     resourceController.getAllResources(v_resources);
@@ -28,7 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
             QString res_type_label = v_resources.at(j).getRes_type().getType_label();
             if(res_type_label.compare(type_label)==0)
             {
-                qsi_type->appendRow(new QStandardItem(v_resources.at(j).getRes_lastname()));
+                // may have memory leak
+                QStandardItem *name = new QStandardItem(v_resources.at(j).getRes_lastname());
+                name->setData(QString::number(v_resources.at(j).getRes_id()));
+                qsi_type->appendRow(name);
             }
         }
         ql_type.append(qsi_type);
@@ -37,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) :
     rootItem->appendRows(ql_type);
     standardModel->setHorizontalHeaderLabels((QStringList()<<QStringLiteral("Types")));
     ui->treeView->setModel(standardModel);
+    ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->statusBar->showMessage("Your are connected to the system!");
 }
 
@@ -67,4 +72,10 @@ void MainWindow::on_actionAdd_Person_triggered()
 void MainWindow::on_actionAdd_Person_Icon_triggered()
 {
     MainWindow::on_actionAdd_Person_triggered();
+}
+
+
+void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
+{
+    qDebug()<<standardModel->itemData(index).values()[1].toString();
 }
