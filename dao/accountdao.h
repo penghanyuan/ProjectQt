@@ -13,6 +13,7 @@ private:
     QSqlDatabase db;
 public:
     AccountDAO();
+    bool insertAccount(Account acc);
     Account selectAccountByUsername(QString username);
 };
 

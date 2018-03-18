@@ -13,6 +13,7 @@ private:
     QSqlDatabase db;
 public:
     TypeDAO();
+    bool insertType(Type &type);
     Type selectTypeById(int id);
     bool selectAllType(vector<Type>& types);
 };
