@@ -86,3 +86,8 @@ void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
     qDebug()<<standardModel->itemData(index).values()[1].toString();
 }
+
+void MainWindow::on_actionCool_triggered()
+{
+
+}

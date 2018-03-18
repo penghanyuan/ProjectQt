@@ -29,6 +29,8 @@ private slots:
 
     void on_treeView_doubleClicked(const QModelIndex &index);
 
+    void on_actionCool_triggered();
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
