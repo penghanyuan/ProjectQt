@@ -4,6 +4,9 @@
 #include "connectionsql.h"
 #include <QSqlQuery>
 #include <QSqlDatabase>
+#include <vector>
+using namespace std;
+
 
 class ClientDAO
 {
@@ -11,9 +14,9 @@ private:
     QSqlDatabase db;
 public:
     ClientDAO();
-    bool insertClient(Client &client);
+    void insertClient(Client &client);
     Client selectClientById(int id);
-    Client selectClientListByLastname(QString lastname);
+    bool selectClientListByLastname(QString value, vector<Client> &clientList);
     Client selectClientListByFirstname(QString firstname);
     Client selectClientListByDate(QDate rdvDate);
 };
