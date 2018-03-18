@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>456</height>
+    <width>442</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,105 +19,48 @@
   <property name="windowTitle">
    <string>Add Client</string>
   </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>351</width>
-     <height>432</height>
+     <x>12</x>
+     <y>12</y>
+     <width>418</width>
+     <height>553</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="5" column="0">
-       <widget class="QLabel" name="appointment_date_label">
-        <property name="text">
-         <string>Appointment Date</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLineEdit" name="phone_number_txt"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="address_label">
-        <property name="text">
-         <string>Address</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="resource_list_label">
-        <property name="text">
-         <string>Resource List</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="first_name_label">
-        <property name="text">
-         <string>First Name</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="last_name_label">
-        <property name="text">
-         <string>Last Name</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QPlainTextEdit" name="comment_txt"/>
-      </item>
       <item row="8" column="1">
-       <widget class="QLineEdit" name="resource_list_txt"/>
+       <widget class="QComboBox" name="combo_res_list"/>
       </item>
       <item row="6" column="1">
-       <widget class="QLineEdit" name="appointment_duration_txt"/>
+       <widget class="QLineEdit" name="appointment_duration_txt">
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
        <widget class="QLineEdit" name="first_name_txt"/>
       </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="postcode_txt"/>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="phone_number_txt"/>
       </item>
       <item row="7" column="0">
        <widget class="QLabel" name="priority_label">
         <property name="text">
-         <string>Priority</string>
+         <string>Priority*</string>
         </property>
        </widget>
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="appointment_duration_label">
         <property name="text">
-         <string>Appointment Duration</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="city_txt"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="city_label">
-        <property name="text">
-         <string>City</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="address_txt"/>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="last_name_txt"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="postcode_label">
-        <property name="text">
-         <string>Postcode</string>
+         <string>Appointment Duration*</string>
         </property>
        </widget>
       </item>
@@ -128,10 +71,44 @@
         </property>
        </widget>
       </item>
-      <item row="10" column="0">
-       <widget class="QLabel" name="comment_label">
+      <item row="1" column="0">
+       <widget class="QLabel" name="first_name_label">
         <property name="text">
-         <string>Comment</string>
+         <string>First Name*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="appointment_date_label">
+        <property name="text">
+         <string>Appointment Date*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="city_txt"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="postcode_label">
+        <property name="text">
+         <string>Postcode*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="address_txt"/>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="resource_list_label">
+        <property name="text">
+         <string>Resource List*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="postcode_txt">
+        <property name="text">
+         <string>1</string>
         </property>
        </widget>
       </item>
@@ -142,6 +119,51 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="last_name_txt">
+        <property name="inputMask">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="city_label">
+        <property name="text">
+         <string>City*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QPlainTextEdit" name="comment_txt">
+        <property name="plainText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="address_label">
+        <property name="text">
+         <string>Address*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QSpinBox" name="priority">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QLabel" name="comment_label">
+        <property name="text">
+         <string>Comment</string>
+        </property>
+       </widget>
+      </item>
       <item row="11" column="1">
        <widget class="QPushButton" name="client_cancel_btn">
         <property name="text">
@@ -149,16 +171,27 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QDateTimeEdit" name="dateTimeEdit"/>
-      </item>
-      <item row="7" column="1">
-       <widget class="QSpinBox" name="spinBox">
-        <property name="minimum">
-         <number>1</number>
+      <item row="0" column="0">
+       <widget class="QLabel" name="last_name_label">
+        <property name="text">
+         <string>Last Name*</string>
         </property>
-        <property name="maximum">
-         <number>5</number>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QDateTimeEdit" name="appointment_date">
+        <property name="displayFormat">
+         <string>dd/MM/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>h</string>
         </property>
        </widget>
       </item>

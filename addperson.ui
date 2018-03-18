@@ -109,7 +109,7 @@
        <widget class="QComboBox" name="comboBox_per"/>
       </item>
       <item row="6" column="1">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="l_psd">
         <property name="text">
          <string>Pass Word</string>
         </property>
@@ -129,10 +129,17 @@
        </spacer>
       </item>
       <item row="5" column="3">
-       <widget class="QLineEdit" name="lineEdit_info_usr"/>
+       <widget class="QLineEdit" name="t_username">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="l_username">
         <property name="text">
          <string>User Name</string>
         </property>
@@ -155,7 +162,14 @@
        </spacer>
       </item>
       <item row="6" column="3">
-       <widget class="QLineEdit" name="lineEdit_info_pwd"/>
+       <widget class="QLineEdit" name="t_password">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="3" column="1">
        <widget class="QLabel" name="label_3">

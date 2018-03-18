@@ -26,9 +26,13 @@ private slots:
 
     void on_actionAdd_Person_Icon_triggered();
 
+
+    void on_treeView_doubleClicked(const QModelIndex &index);
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
+    QStandardItemModel * standardModel;
     Ui::MainWindow *ui;
 
 };

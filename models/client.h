@@ -2,6 +2,8 @@
 #define CLIENT_H
 #include <QString>
 #include <QDate>
+#include <vector>
+using namespace std;
 class Client
 {
 private:
@@ -16,6 +18,7 @@ private:
     QDate cli_rdv_date;
     int cli_rdv_duration;
     int cli_priority;
+    vector<int> cli_v_resources;
 
 
 public:
@@ -43,6 +46,8 @@ public:
     int getCli_priority() const;
     void setCli_priority(int value);
 
+    vector<int> getCli_v_resources() const;
+    void setCli_v_resources(const vector<int> &value);
 };
 
 #endif // CLIENT_H
