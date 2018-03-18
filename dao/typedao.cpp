@@ -7,28 +7,6 @@ TypeDAO::TypeDAO()
     db = connection->getDb();
 }
 
-
-bool TypeDAO::insertType(QString label){
-
-    QSqlQuery query(db);
-
-    QString strSqlCheckExist("SELECT * FROM TType WHERE Label = ? ");
-    query.addBindValue(label);
-    query.prepare(strSqlCheckExist);
-    query.exec();
-    if(!query){
-        QString strSqlInsertText("INSERT INTO TType"
-                                 "(Label) "
-                                 "VALUES (:Label)");
-        query.prepare(strSqlInsertText);
-        query.bindValue(":Label", label);
-
-        query.exec();
-    }
-
-}
-
-
 Type TypeDAO::selectTypeById(int id)
 {
     QSqlQuery query(db);
@@ -45,4 +23,28 @@ Type TypeDAO::selectTypeById(int id)
     }
     return type;
 
+}
+
+bool TypeDAO::selectAllType(vector<Type> &types)
+{
+    QSqlQuery query(db);
+    QString strSqlText("SELECT * FROM TType");
+    query.prepare(strSqlText);
+    query.exec();
+    while ( query.next() ) {
+        int id = query.value(0).toInt();
+        QString label = query.value(1).toString();
+        Type type;
+        type.setType_id(id);
+        type.setType_label(label);
+        types.push_back(type);
+    }
+    if(!types.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

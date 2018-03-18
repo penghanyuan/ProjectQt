@@ -7,39 +7,6 @@ ResourceDAO::ResourceDAO()
     db = connection->getDb();
 }
 
-
-bool ResourceDAO::insertResource(Resource &res){
-
-    QSqlQuery query(db);
-
-    QString strSqlInsertText("INSERT INTO TRessource"
-                             "(Nom, Prenom, IdType) "
-                             "VALUES (:Nom, :Prenom, :IdType)");
-    query.prepare(strSqlInsertText);
-    query.bindValue(":Nom", res.getRes_lastname());
-    query.bindValue(":Prenom", res.getRes_firstname());
-    query.bindValue(":IdType", res.getRes_type().getType_id());
-
-    query.exec();
-
-}
-
-bool ResourceDAO::insertTechnician(Resource &resource, QString usr, QString pwd){
-    QSqlQuery query(db);
-
-    QString strSqlInsertText("INSERT INTO TRessource"
-                             "(Nom, Prenom, IdType) "
-                             "VALUES (:Nom, :Prenom, :IdType)");
-    query.prepare(strSqlInsertText);
-    query.bindValue(":Nom", res.getRes_lastname());
-    query.bindValue(":Prenom", res.getRes_firstname());
-    query.bindValue(":IdType", res.getRes_type().getType_id());
-
-    query.exec();
-    Account ac = AccountDAO.insertAccount(resource,usr,pwd);
-}
-
-
 bool ResourceDAO::selectAllResources(vector<Resource> &resources)
 {
     TypeDAO typeDAO;
@@ -68,4 +35,27 @@ bool ResourceDAO::selectAllResources(vector<Resource> &resources)
     {
         return false;
     }
+}
+
+Resource ResourceDAO::selectResourceById(int id)
+{
+    TypeDAO typeDAO;
+    QSqlQuery query(db);
+    QString strSqlText("SELECT * FROM TRessource where Id = ?");
+    query.prepare(strSqlText);
+    query.addBindValue(id);
+    query.exec();
+    Resource r;
+    while ( query.next() ) {
+        int id = query.value(0).toInt();
+        QString lastname = query.value(1).toString();
+        QString firstname = query.value(2).toString();
+        int type_id = query.value(3).toInt();
+        Type type = typeDAO.selectTypeById(type_id);
+        r.setRes_id(id);
+        r.setRes_firstname(firstname);
+        r.setRes_lastname(lastname);
+        r.setRes_type(type);
+    }
+    return r;
 }
