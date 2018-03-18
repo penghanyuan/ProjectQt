@@ -83,6 +83,12 @@ void AddClient::on_client_submit_btn_clicked()
         res_string = pLineEdit->text();
         tel = ui->phone_number_txt->text();
         comment = ui->comment_txt->toPlainText();
+        //add if!!!
+        clientController.addClient(lastname,firstname,address,city,postcode,tel,comment,rdv_date,rdv_duration,res_string,priority);
+        QMessageBox::information(this, tr("Successful"),
+                                     tr("Add client successfully!!"),
+                                     QMessageBox::Ok);
+        accept();
     }
 
 }

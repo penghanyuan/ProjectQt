@@ -23,7 +23,6 @@ void ClientDAO::insertClient(Client &cl){
     query.bindValue(":Priorite", cl.getCli_priority());
     query.bindValue(":Commentaire", cl.getCli_comment());
     query.bindValue(":Tel", cl.getCli_tel());
-
     query.exec();
 
 

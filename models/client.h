@@ -12,8 +12,8 @@ private:
     QString cli_firstname;
     QString cli_address;
     QString cli_city;
-    QString cli_postcode;
-    QString cli_tel;
+    int cli_postcode;
+    int cli_tel;
     QString cli_comment;
     QDate cli_rdv_date;
     int cli_rdv_duration;
@@ -31,10 +31,6 @@ public:
     void setCli_address(const QString &value);
     QString getCli_city() const;
     void setCli_city(const QString &value);
-    QString getCli_postcode() const;
-    void setCli_postcode(const QString &value);
-    QString getCli_tel() const;
-    void setCli_tel(const QString &value);
     int getCli_id() const;
     void setCli_id(int value);
     QString getCli_comment() const;
@@ -47,7 +43,11 @@ public:
     void setCli_priority(int value);
 
     vector<int> getCli_v_resources() const;
-    void setCli_v_resources(const vector<int> &value);
+    void setCli_v_resources(const vector<int> value);
+    int getCli_postcode() const;
+    void setCli_postcode(int value);
+    int getCli_tel() const;
+    void setCli_tel(int value);
 };
 
 #endif // CLIENT_H

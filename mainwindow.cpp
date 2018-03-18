@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     standardModel->setHorizontalHeaderLabels((QStringList()<<QStringLiteral("Types")));
     ui->treeView->setModel(standardModel);
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->statusBar->showMessage("Your are connected to the system!");
+    ui->statusBar->showMessage("You are connected to the system!");
 }
 
 MainWindow::~MainWindow()
@@ -55,7 +55,11 @@ void MainWindow::on_actionAdd_Client_triggered()
     AddClient add_client;
 
     add_client.setWindowFlags(add_client.windowFlags()& ~ Qt::WindowMaximizeButtonHint);
-    add_client.exec();
+
+    if(add_client.exec()==QDialog::Accepted)
+    {
+        ui->statusBar->showMessage("You have added one client");
+    }
 }
 
 void MainWindow::on_actionAdd_Client_Icon_triggered()
@@ -66,7 +70,10 @@ void MainWindow::on_actionAdd_Client_Icon_triggered()
 void MainWindow::on_actionAdd_Person_triggered()
 {
     AddPerson add_person;
-    add_person.exec();
+    if(add_person.exec()==QDialog::Accepted)
+    {
+        ui->statusBar->showMessage("You have added one person");
+    }
 }
 
 void MainWindow::on_actionAdd_Person_Icon_triggered()

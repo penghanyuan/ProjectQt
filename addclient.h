@@ -7,6 +7,7 @@
 #include <QCheckBox>
 #include <QLineEdit>
 #include "controller/resourcescontroller.h"
+#include "controller/clientcontroller.h"
 #include "toolbox.h"
 namespace Ui {
 class AddClient;
@@ -38,12 +39,18 @@ private slots:
     void on_appointment_duration_txt_editingFinished();
 
 private:
+    // ui
     Ui::AddClient *ui;
     QListWidget* pListWidget;
     QLineEdit* pLineEdit;
+
+    // controllers
+    ResourcesController resourceController;
+    ClientController clientController;
+
+    // variables
     bool bSelected;
     QString strSelectedText;
-    ResourcesController resourceController;
     bool lastname_isempty;
     bool first_isempty;
     bool address_isempty;

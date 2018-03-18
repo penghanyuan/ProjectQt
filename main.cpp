@@ -11,6 +11,9 @@ int main(int argc, char *argv[])
     MainWindow m;
     Login login;
 
+    // create database
+    //C_INIT_BD::Creation_BD();
+
     //set database connection
     ConnectionSQL *connectionSQL = ConnectionSQL::getConnection();
 

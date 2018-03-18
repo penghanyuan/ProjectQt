@@ -27,11 +27,16 @@ private slots:
 
     void on_t_password_editingFinished();
 
+    void on_person_submit_btn_clicked();
+
 private:
     TypeController typeController;
     Ui::AddPerson *ui;
     bool lastname_isempty;
     bool first_isempty;
+    bool username_isempty;
+    bool password_isempty;
+    bool is_techncien;
 };
 
 #endif // ADDPERSON_H

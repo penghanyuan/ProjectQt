@@ -40,26 +40,6 @@ void Client::setCli_city(const QString &value)
     cli_city = value;
 }
 
-QString Client::getCli_postcode() const
-{
-    return cli_postcode;
-}
-
-void Client::setCli_postcode(const QString &value)
-{
-    cli_postcode = value;
-}
-
-QString Client::getCli_tel() const
-{
-    return cli_tel;
-}
-
-void Client::setCli_tel(const QString &value)
-{
-    cli_tel = value;
-}
-
 int Client::getCli_id() const
 {
     return cli_id;
@@ -115,9 +95,29 @@ vector<int> Client::getCli_v_resources() const
     return cli_v_resources;
 }
 
-void Client::setCli_v_resources(const vector<int> &value)
+void Client::setCli_v_resources(const vector<int> value)
 {
     cli_v_resources = value;
+}
+
+int Client::getCli_postcode() const
+{
+    return cli_postcode;
+}
+
+void Client::setCli_postcode(int value)
+{
+    cli_postcode = value;
+}
+
+int Client::getCli_tel() const
+{
+    return cli_tel;
+}
+
+void Client::setCli_tel(int value)
+{
+    cli_tel = value;
 }
 
 Client::Client()
