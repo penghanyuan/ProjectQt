@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "controller/typecontroller.h"
+#include "toolbox.h"
 namespace Ui {
 class AddPerson;
 }
@@ -16,11 +17,21 @@ public:
     ~AddPerson();
 
 private slots:
-    void on_comboBox_per_currentIndexChanged(const QString &arg1);
+    void on_person_type_currentIndexChanged(const QString &arg1);
+
+    void on_last_name_txt_editingFinished();
+
+    void on_first_name_txt_editingFinished();
+
+    void on_t_username_editingFinished();
+
+    void on_t_password_editingFinished();
 
 private:
     TypeController typeController;
     Ui::AddPerson *ui;
+    bool lastname_isempty;
+    bool first_isempty;
 };
 
 #endif // ADDPERSON_H

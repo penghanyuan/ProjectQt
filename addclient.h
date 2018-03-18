@@ -7,6 +7,7 @@
 #include <QCheckBox>
 #include <QLineEdit>
 #include "controller/resourcescontroller.h"
+#include "toolbox.h"
 namespace Ui {
 class AddClient;
 }
@@ -50,8 +51,7 @@ private:
     bool pc_isempty;
     bool res_isempty;
     bool duration_isempty;
-    // private function
-    QString firstToUpper(QString);
+
 
 };
 

@@ -146,20 +146,9 @@ void AddClient::on_last_name_txt_editingFinished()
         ui->last_name_txt->setStyleSheet("background-color: white;");
         lastname_isempty = false;
     }
-    ui->last_name_txt->setText(firstToUpper(ui->last_name_txt->text()));
+    ui->last_name_txt->setText(ToolBox::firstToUpper(ui->last_name_txt->text()));
 }
 
-QString AddClient::firstToUpper(QString string)
-{
-    QString text = string;
-    if(!text.isEmpty())
-    {
-        text = text.toLower().replace(0,1,text.toLower().at(0).toUpper());
-        return text;
-    }
-    else
-        return NULL;
-}
 
 void AddClient::on_first_name_txt_editingFinished()
 {
@@ -170,7 +159,7 @@ void AddClient::on_first_name_txt_editingFinished()
         ui->first_name_txt->setStyleSheet("background-color: white;");
         first_isempty = false;
     }
-    ui->first_name_txt->setText(firstToUpper(ui->first_name_txt->text()));
+    ui->first_name_txt->setText(ToolBox::firstToUpper(ui->first_name_txt->text()));
 
 }
 
@@ -183,7 +172,7 @@ void AddClient::on_city_txt_editingFinished()
         ui->city_txt->setStyleSheet("background-color: white;");
         city_isempty = false;
     }
-    ui->city_txt->setText(firstToUpper(ui->city_txt->text()));
+    ui->city_txt->setText(ToolBox::firstToUpper(ui->city_txt->text()));
 }
 
 void AddClient::on_address_txt_editingFinished()

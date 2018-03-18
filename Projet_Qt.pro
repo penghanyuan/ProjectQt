@@ -44,7 +44,8 @@ SOURCES += \
     controller/accountcontroller.cpp \
     controller/resourcescontroller.cpp \
     controller/clientcontroller.cpp \
-    controller/typecontroller.cpp
+    controller/typecontroller.cpp \
+    toolbox.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -66,7 +67,8 @@ HEADERS += \
     controller/accountcontroller.h \
     controller/resourcescontroller.h \
     controller/clientcontroller.h \
-    controller/typecontroller.h
+    controller/typecontroller.h \
+    toolbox.h
 
 FORMS += \
         mainwindow.ui \
