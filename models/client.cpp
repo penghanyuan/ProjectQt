@@ -110,7 +110,17 @@ void Client::setCli_priority(int value)
     cli_priority = value;
 }
 
+vector<int> Client::getCli_v_resources() const
+{
+    return cli_v_resources;
+}
+
+void Client::setCli_v_resources(const vector<int> &value)
+{
+    cli_v_resources = value;
+}
+
 Client::Client()
 {
-
+    
 }
