@@ -4,8 +4,6 @@
 #include "connectionsql.h"
 #include <QSqlQuery>
 #include <QSqlDatabase>
-#include <vector>
-using namespace std;
 class TypeDAO
 {
 private:
@@ -13,8 +11,8 @@ private:
     QSqlDatabase db;
 public:
     TypeDAO();
+    bool insertType(Type &type);
     Type selectTypeById(int id);
-    bool selectAllType(vector<Type>& types);
 };
 
 #endif // TYPEDAO_H
