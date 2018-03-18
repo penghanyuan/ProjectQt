@@ -27,3 +27,25 @@ Account AccountDAO::selectAccountByUsername(QString username)
     }
     return a;
 }
+
+bool AccountDAO::insertAccount(Account acc){
+    
+    QSqlQuery query(db);
+    
+    query.prepare("SELECT * FROM TCompte WHERE Login = ? ");
+    query.addBindValue(acc.getAcc_username());
+    query.exec();
+    if(!query.next()){
+        
+        QString strSqlInsertText("INSERT INTO TCompte"
+                                 "(IdRessource, Login, Mdp) "
+                                 "VALUES (:IdRessource, :Login, :Mdp)");
+        query.prepare(strSqlInsertText);
+        query.bindValue(":IdRessource", acc.getAcc_resource().getRes_id());
+        query.bindValue(":Login", acc.getAcc_username());
+        query.bindValue(":Mdp", acc.getAcc_password());
+        
+        return query.exec();
+    }
+    
+}
