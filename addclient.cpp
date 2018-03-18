@@ -1,13 +1,14 @@
 #include "addclient.h"
 #include "ui_addclient.h"
 #include <QDebug>
+#include <QMessageBox>
 AddClient::AddClient(QDialog *parent) :
     QDialog(parent),
     ui(new Ui::AddClient)
 {
     // set ui
     ui->setupUi(this);
-    ui->dateTimeEdit->setDateRange(QDate::currentDate(),QDate::currentDate().addDays(36500));
+    ui->appointment_date->setDateRange(QDate::currentDate(),QDate::currentDate().addDays(36500));
     ui->appointment_duration_txt->setValidator(new QIntValidator);
     ui->postcode_txt->setValidator(new QIntValidator);
     ui->phone_number_txt->setValidator(new QIntValidator);
@@ -48,6 +49,9 @@ void AddClient::on_client_submit_btn_clicked()
     on_last_name_txt_editingFinished();
     on_first_name_txt_editingFinished();
     on_city_txt_editingFinished();
+    on_appointment_duration_txt_editingFinished();
+    on_postcode_txt_editingFinished();
+    on_address_txt_editingFinished();
     QString lastname;
     QString firstname;
     QString address;
@@ -56,10 +60,31 @@ void AddClient::on_client_submit_btn_clicked()
     QString tel;
     QString comment;
     QDate rdv_date;
-    int rdv_duration;
+    QString rdv_duration;
+    QString res_string;
     int priority;
 
-    qDebug()<<pLineEdit->text();
+    if(lastname_isempty||first_isempty||address_isempty||city_isempty||pc_isempty||duration_isempty||res_isempty)
+    {
+        QMessageBox::warning(this, tr("Waring"),
+                                     tr("All field with * can not be empty!!"),
+                                     QMessageBox::Ok);
+    }
+    else
+    {
+        lastname = ui->last_name_txt->text();
+        firstname = ui->first_name_txt->text();
+        address = ui->address_txt->text();
+        city = ui->city_txt->text();
+        postcode = ui->postcode_txt->text();
+        rdv_date = ui->appointment_date->date();
+        rdv_duration = ui->appointment_duration_txt->text();
+        priority = ui->priority->value();
+        res_string = pLineEdit->text();
+        tel = ui->phone_number_txt->text();
+        comment = ui->comment_txt->toPlainText();
+    }
+
 }
 
 void AddClient::stateChanged(int state)
