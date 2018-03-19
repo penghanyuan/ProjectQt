@@ -28,7 +28,7 @@ Type TypeDAO::selectTypeById(int id)
 bool TypeDAO::selectAllType(vector<Type> &types)
 {
     QSqlQuery query(db);
-    QString strSqlText("SELECT * FROM TType");
+    QString strSqlText("SELECT * FROM TType order by Id");
     query.prepare(strSqlText);
     query.exec();
     while ( query.next() ) {

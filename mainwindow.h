@@ -6,6 +6,8 @@
 #include <QSqlQuery>
 #include "controller/resourcescontroller.h"
 #include "controller/typecontroller.h"
+#include "cool.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -37,6 +39,8 @@ private:
     QStandardItemModel * standardModel;
     Ui::MainWindow *ui;
 
+    void loadDataForTreeView(QList<QStandardItem*> &ql_type);
+    void bindDataOnView();
 };
 
 #endif // MAINWINDOW_H

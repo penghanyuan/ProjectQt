@@ -66,10 +66,33 @@ bool ResourceDAO::selectAllResources(vector<Resource> &resources){
     }
 }
 
+Resource ResourceDAO::selectResourceById(int id)
+{
+    TypeDAO typeDAO;
+    QSqlQuery query(db);
+    QString strSqlText("SELECT * FROM TRessource where Id = ?");
+    query.prepare(strSqlText);
+    query.addBindValue(id);
+    query.exec();
+    Resource r;
+    while ( query.next() ) {
+        int id = query.value(0).toInt();
+        QString lastname = query.value(1).toString();
+        QString firstname = query.value(2).toString();
+        int type_id = query.value(3).toInt();
+        Type type = typeDAO.selectTypeById(type_id);
+        r.setRes_id(id);
+        r.setRes_firstname(firstname);
+        r.setRes_lastname(lastname);
+        r.setRes_type(type);
+    }
+    return r;
+}
 
 
 
-bool ResourceDAO::modifyResource(Resource &res, int id){
+
+bool ResourceDAO::modifyResource(Resource res){
 
     QSqlQuery query(db);
 
@@ -80,7 +103,7 @@ bool ResourceDAO::modifyResource(Resource &res, int id){
     query.addBindValue(res.getRes_lastname());
     query.addBindValue(res.getRes_firstname());
     query.addBindValue(res.getRes_type().getType_id());
-    query.addBindValue(id);
+    query.addBindValue(res.getRes_id());
 
     return query.exec();
 }
@@ -94,4 +117,15 @@ bool ResourceDAO::deleteResource(int id){
     query.addBindValue(id);
 
     return query.exec();
+}
+
+int ResourceDAO::selectMaxId()
+{
+    QSqlQuery query(db);
+    QString strSqlText("SELECT max(Id) FROM TRessource");
+    query.prepare(strSqlText);
+    query.exec();
+    while ( query.next() ) {
+        return query.value(0).toInt();
+    }
 }

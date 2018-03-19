@@ -20,8 +20,9 @@ public:
     Resource selectResourceById(int id);
     bool insertResource(Resource resource);
     bool insertTechnician(Account account);
-    bool modifyResource(Resource resource, int id);
+    bool modifyResource(Resource resource);
     bool deleteResource(int id);
+    int selectMaxId();
 
 };
 

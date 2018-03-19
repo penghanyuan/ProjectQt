@@ -9,6 +9,8 @@ private:
 public:
     AccountController();
     bool verifyLogin(QString username,QString password);
+    bool addAccount(QString username,QString password, Resource resource);
+    Account getAccountByResourceId(int res_id);
 };
 
 #endif // LOGINCONTROLLER_H

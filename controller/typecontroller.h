@@ -9,6 +9,7 @@ private:
 public:
     TypeController();
     bool getAllType(vector<Type> & types);
+    Type getTypeById(int id);
 };
 
 #endif // TYPECONTROLLER_H

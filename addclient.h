@@ -59,6 +59,9 @@ private:
     bool res_isempty;
     bool duration_isempty;
 
+    // functions
+    void createMultiCombo();
+
 
 };
 

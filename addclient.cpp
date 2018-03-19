@@ -12,31 +12,7 @@ AddClient::AddClient(QDialog *parent) :
     ui->appointment_duration_txt->setValidator(new QIntValidator);
     ui->postcode_txt->setValidator(new QIntValidator);
     ui->phone_number_txt->setValidator(new QIntValidator);
-
-    // get all aviliable resources and add to list
-    vector<Resource> v_res;
-    resourceController.getAllResources(v_res);
-    pListWidget = new QListWidget(this);
-    pLineEdit = new QLineEdit(this);
-    for (int i = 0; i < v_res.size(); i++)
-      {
-            Resource res = v_res.at(i);
-            if(res.getRes_id()!=1)
-            {
-                QListWidgetItem *pItem = new QListWidgetItem(pListWidget);
-                pListWidget->addItem(pItem);
-                QCheckBox *pCheckBox = new QCheckBox(this);
-                pCheckBox->setText(QStringLiteral("%1.%2:%3").arg(res.getRes_id()).arg(res.getRes_lastname()).arg(res.getRes_type().getType_label()));
-                pListWidget->addItem(pItem);
-                pListWidget->setItemWidget(pItem, pCheckBox);
-                connect(pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(stateChanged(int)));
-            }
-        }
-    ui->combo_res_list->setModel(pListWidget->model());
-    ui->combo_res_list->setView(pListWidget);
-    ui->combo_res_list->setLineEdit(pLineEdit);
-    pLineEdit->setReadOnly(true);
-    connect(pLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
+    this->createMultiCombo();
 }
 
 AddClient::~AddClient()
@@ -213,4 +189,32 @@ void AddClient::on_appointment_duration_txt_editingFinished()
         ui->appointment_duration_txt->setStyleSheet("background-color: white;");
         duration_isempty = false;
     }
+}
+
+void AddClient::createMultiCombo()
+{
+    // get all aviliable resources and add to list
+    vector<Resource> v_res;
+    resourceController.getAllResources(v_res);
+    pListWidget = new QListWidget(this);
+    pLineEdit = new QLineEdit(this);
+    for (int i = 0; i < v_res.size(); i++)
+      {
+            Resource res = v_res.at(i);
+            if(res.getRes_id()!=1)
+            {
+                QListWidgetItem *pItem = new QListWidgetItem(pListWidget);
+                pListWidget->addItem(pItem);
+                QCheckBox *pCheckBox = new QCheckBox(this);
+                pCheckBox->setText(QStringLiteral("%1.%2:%3").arg(res.getRes_id()).arg(res.getRes_lastname()).arg(res.getRes_type().getType_label()));
+                pListWidget->addItem(pItem);
+                pListWidget->setItemWidget(pItem, pCheckBox);
+                connect(pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(stateChanged(int)));
+            }
+        }
+    ui->combo_res_list->setModel(pListWidget->model());
+    ui->combo_res_list->setView(pListWidget);
+    ui->combo_res_list->setLineEdit(pLineEdit);
+    pLineEdit->setReadOnly(true);
+    connect(pLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 }

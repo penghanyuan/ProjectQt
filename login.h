@@ -25,6 +25,10 @@ private slots:
 
 
 
+    void on_username_textEdited(const QString &arg1);
+
+    void on_password_textEdited(const QString &arg1);
+
 private:
     Ui::Login *ui;
     QString  login_username;

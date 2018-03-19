@@ -12,3 +12,8 @@ bool TypeController::getAllType(vector<Type> &types)
     else
         return false;
 }
+
+Type TypeController::getTypeById(int id)
+{
+    return typeDAO.selectTypeById(id);
+}

@@ -15,6 +15,8 @@ public:
     AccountDAO();
     bool insertAccount(Account acc);
     Account selectAccountByUsername(QString username);
+    Account selectAccountByResourceId(int id);
+    bool modifyAccount(Account account);
 };
 
 #endif // ACCOUNTDAO_H

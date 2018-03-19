@@ -71,3 +71,13 @@ void Login::loadcfg()
 
 
 }
+
+void Login::on_username_textEdited(const QString &arg1)
+{
+    login_username = arg1;
+}
+
+void Login::on_password_textEdited(const QString &arg1)
+{
+    login_password = arg1;
+}
