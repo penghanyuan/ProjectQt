@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
     this->bindDataOnView();
+    this->showClientData();
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->statusBar->showMessage("You are connected to the system!");
 }
 
@@ -25,6 +27,7 @@ void MainWindow::on_actionAdd_Client_triggered()
 
     if(add_client.exec()==QDialog::Accepted)
     {
+        model->select();
         ui->statusBar->showMessage("You have added one client");
     }
 }
@@ -56,8 +59,6 @@ void MainWindow::on_actionAdd_Person_Icon_triggered()
  */
 void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
-//    EditResource editResource;
-//    editResource.showResource(standardModel->itemData(index).values()[1].toInt());
     AddPerson add_person;
     add_person.setIs_Edit(true);
     add_person.showResource(standardModel->itemData(index).values()[1].toInt());
@@ -75,7 +76,7 @@ void MainWindow::on_actionCool_triggered()
     cool.exec();
 }
 
-void MainWindow::loadDataForTreeView(QList<QStandardItem*> &ql_type)
+void MainWindow::loadDataForTreeView(QList<QStandardItem*> &qlist_type)
 {
     vector<Resource> v_resources;
     vector<Type> v_types;
@@ -87,6 +88,7 @@ void MainWindow::loadDataForTreeView(QList<QStandardItem*> &ql_type)
     {
         QString type_label = v_types.at(i).getType_label();
         QStandardItem * qsi_type = new QStandardItem(type_label);
+        qsi_type->setData(-1);
         // create resources items
         for(unsigned long j = 0;j<v_resources.size();j++)
         {
@@ -99,17 +101,31 @@ void MainWindow::loadDataForTreeView(QList<QStandardItem*> &ql_type)
                 qsi_type->appendRow(name);
             }
         }
-        ql_type.append(qsi_type);
+        qlist_type.append(qsi_type);
     }
 }
 
+/**
+ * @brief MainWindow::bindDataOnView
+ */
 void MainWindow::bindDataOnView()
 {
-    QList<QStandardItem*> ql_type;
     // new
     standardModel = new QStandardItemModel(this) ;
+
     QStandardItem *rootItem = standardModel->invisibleRootItem();
 
+    for(int i = 0;i<ql_type.size();i++)
+    {
+        if(ql_type[i]!=NULL)
+        {
+            qDebug()<<"delete";
+            ql_type[i]->removeRows(0,ql_type[i]->rowCount());
+            delete ql_type[i];
+            ql_type[i] = NULL;
+        }
+    }
+    ql_type.clear();
     // load data from db
     this->loadDataForTreeView(ql_type);
 
@@ -117,4 +133,124 @@ void MainWindow::bindDataOnView()
     rootItem->appendRows(ql_type);
     standardModel->setHorizontalHeaderLabels((QStringList()<<QStringLiteral("Types")));
     ui->treeView->setModel(standardModel);
+}
+
+void MainWindow::showClientData()
+{
+    ConnectionSQL *connection = ConnectionSQL::getConnection();
+    db = connection->getDb();
+
+    model = new QSqlTableModel(this,db);
+    model->setTable("TClient");
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->select();
+    model->removeColumn(3);
+    model->removeColumn(3);
+    model->removeColumn(3);
+    model->removeColumn(3);
+    model->removeColumn(3);
+    model->removeColumn(4);
+    model->removeColumn(4);
+
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
+}
+
+/**
+ * @brief MainWindow::searchByLastnameOrFirstname
+ */
+void MainWindow::searchByLastnameOrFirstname()
+{
+    QString s_lastname;
+    QString s_firstname;
+    s_lastname = ui->s_lastname_txt->text();
+    s_firstname = ui->s_firstname_txt->text();
+    if(!s_lastname.isEmpty())
+    {
+        s_lastname = s_lastname+"%";
+    }
+    if(!s_firstname.isEmpty())
+    {
+        s_firstname = s_firstname+"%";
+    }
+    if(s_lastname.isEmpty()&&s_firstname.isEmpty())
+    {
+        s_lastname = '%';
+    }
+    fil_fname_lname = "Nom LIKE '"+s_lastname+"' or Prenom like '"+s_firstname+"'";
+}
+
+/**
+ * @brief MainWindow::searchByTime
+ */
+void MainWindow::searchByTime()
+{
+    QDate s_fdate = ui->fdate->date();
+    QDate s_edate = ui->edate->date();
+
+    fil_date = QObject::tr("DateRdv BETWEEN '%1' AND '%2'").arg(s_fdate.toString("yyyy-MM-dd")).arg(s_edate.toString("yyyy-MM-dd"));
+}
+
+
+
+void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
+{
+    EditClient editClient;
+
+    // get client id
+    int client_id = model->index(index.row(),0).data().toInt();
+    editClient.setClient_id(client_id);
+    editClient.loadClient();
+    if(editClient.exec()==QDialog::Accepted)
+    {
+        model->select();
+//        ui->tableView->setModel(model);
+        ui->statusBar->showMessage("You have edited one client");
+    }
+
+}
+
+/**
+ * @brief search function
+ */
+void MainWindow::on_pushButton_clicked()
+{
+    searchByLastnameOrFirstname();
+    if(ui->enable_date->isChecked())
+    {
+        searchByTime();
+        qDebug()<<QObject::tr("(%1) AND (%2)").arg(fil_fname_lname).arg(fil_date);
+        model->setFilter(QObject::tr("(%1) AND (%2)").arg(fil_fname_lname).arg(fil_date));
+
+    }
+    else
+    {
+        model->setFilter(QObject::tr("%1").arg(fil_fname_lname));
+    }
+    model->select();
+
+}
+
+/**
+ * @brief MainWindow::on_treeView_clicked
+ * @param index
+ */
+void MainWindow::on_treeView_clicked(const QModelIndex &index)
+{
+    int id = standardModel->itemData(index).values()[1].toInt();
+    if(id>0)
+    {
+        selected_person_id = id;
+    }
+
+}
+
+
+void MainWindow::on_btn_delete_clicked()
+{
+    if(resourceController.deleteResource(selected_person_id))
+    {
+        ui->statusBar->showMessage("You have deleted one person");
+        this->bindDataOnView();
+    }
 }

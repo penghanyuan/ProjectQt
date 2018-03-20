@@ -46,7 +46,9 @@ SOURCES += \
     controller/clientcontroller.cpp \
     controller/typecontroller.cpp \
     toolbox.cpp \
-    cool.cpp
+    cool.cpp \
+    editclient.cpp \
+    controller/appointmentcontroller.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -70,14 +72,17 @@ HEADERS += \
     controller/clientcontroller.h \
     controller/typecontroller.h \
     toolbox.h \
-    cool.h
+    cool.h \
+    editclient.h \
+    controller/appointmentcontroller.h
 
 FORMS += \
         mainwindow.ui \
     login.ui \
     addclient.ui \
     addperson.ui \
-    cool.ui
+    cool.ui \
+    editclient.ui
 
 RESOURCES += \
     icons.qrc

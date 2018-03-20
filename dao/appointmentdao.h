@@ -6,12 +6,12 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
-class appointmentDAO
+class AppointmentDAO
 {
 private:
     QSqlDatabase db;
 public:
-    appointmentDAO();
+    AppointmentDAO();
     bool insertAppointment(Client &client, Resource &resource);
 
 };

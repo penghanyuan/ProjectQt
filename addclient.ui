@@ -34,74 +34,30 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QGridLayout" name="gridLayout">
+      <item row="5" column="1">
+       <widget class="QDateTimeEdit" name="appointment_date">
+        <property name="displayFormat">
+         <string>dd/MM/yyyy</string>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
       <item row="8" column="1">
        <widget class="QComboBox" name="combo_res_list"/>
       </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="appointment_duration_txt">
+      <item row="0" column="0">
+       <widget class="QLabel" name="last_name_label">
         <property name="text">
-         <string>1</string>
+         <string>Last Name*</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="first_name_txt"/>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLineEdit" name="phone_number_txt"/>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="priority_label">
+      <item row="11" column="1">
+       <widget class="QPushButton" name="client_cancel_btn">
         <property name="text">
-         <string>Priority*</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="appointment_duration_label">
-        <property name="text">
-         <string>Appointment Duration*</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="phone_number_label">
-        <property name="text">
-         <string>Phone Number</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="first_name_label">
-        <property name="text">
-         <string>First Name*</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="appointment_date_label">
-        <property name="text">
-         <string>Appointment Date*</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="city_txt"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="postcode_label">
-        <property name="text">
-         <string>Postcode*</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="address_txt"/>
-      </item>
-      <item row="8" column="0">
-       <widget class="QLabel" name="resource_list_label">
-        <property name="text">
-         <string>Resource List*</string>
+         <string>Cancel</string>
         </property>
        </widget>
       </item>
@@ -112,6 +68,26 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="address_txt"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="appointment_duration_txt">
+        <property name="text">
+         <string>60</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="first_name_label">
+        <property name="text">
+         <string>First Name*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="city_txt"/>
+      </item>
       <item row="11" column="0">
        <widget class="QPushButton" name="client_submit_btn">
         <property name="text">
@@ -119,24 +95,27 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="last_name_txt">
-        <property name="inputMask">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="city_label">
-        <property name="text">
-         <string>City*</string>
-        </property>
-       </widget>
-      </item>
       <item row="10" column="1">
        <widget class="QPlainTextEdit" name="comment_txt">
         <property name="plainText">
          <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="postcode_label">
+        <property name="text">
+         <string>Postcode*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="1">
+       <widget class="QLineEdit" name="phone_number_txt"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="appointment_date_label">
+        <property name="text">
+         <string>Appointment Date*</string>
         </property>
        </widget>
       </item>
@@ -157,6 +136,30 @@
         </property>
        </widget>
       </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="priority_label">
+        <property name="text">
+         <string>Priority*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="city_label">
+        <property name="text">
+         <string>City*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="last_name_txt">
+        <property name="inputMask">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="first_name_txt"/>
+      </item>
       <item row="10" column="0">
        <widget class="QLabel" name="comment_label">
         <property name="text">
@@ -164,34 +167,24 @@
         </property>
        </widget>
       </item>
-      <item row="11" column="1">
-       <widget class="QPushButton" name="client_cancel_btn">
+      <item row="8" column="0">
+       <widget class="QLabel" name="resource_list_label">
         <property name="text">
-         <string>Cancel</string>
+         <string>Resource List*</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="last_name_label">
+      <item row="6" column="0">
+       <widget class="QLabel" name="appointment_duration_label">
         <property name="text">
-         <string>Last Name*</string>
+         <string>Appointment Duration(min)*</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QDateTimeEdit" name="appointment_date">
-        <property name="displayFormat">
-         <string>dd/MM/yyyy</string>
-        </property>
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="2">
-       <widget class="QLabel" name="label">
+      <item row="9" column="0">
+       <widget class="QLabel" name="phone_number_label">
         <property name="text">
-         <string>h</string>
+         <string>Phone Number</string>
         </property>
        </widget>
       </item>

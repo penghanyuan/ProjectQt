@@ -58,6 +58,11 @@ bool ResourcesController::modifyTechnicien(int id, QString lastname, QString fir
     accountDAO.modifyAccount(account);
 }
 
+bool ResourcesController::deleteResource(int id)
+{
+    return resourceDAO.deleteResource(id);
+}
+
 void ResourcesController::makeResource(QString lastname, QString firstname, QString type)
 {
 

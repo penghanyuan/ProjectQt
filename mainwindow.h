@@ -6,7 +6,10 @@
 #include <QSqlQuery>
 #include "controller/resourcescontroller.h"
 #include "controller/typecontroller.h"
+#include "controller/clientcontroller.h"
+#include "connectionsql.h"
 #include "cool.h"
+#include "editclient.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,19 +31,40 @@ private slots:
 
     void on_actionAdd_Person_Icon_triggered();
 
-
     void on_treeView_doubleClicked(const QModelIndex &index);
 
     void on_actionCool_triggered();
 
+
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
+    void on_pushButton_clicked();
+
+    void on_treeView_clicked(const QModelIndex &index);
+
+    void on_btn_delete_clicked();
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
+    ClientController clientController;
     QStandardItemModel * standardModel;
     Ui::MainWindow *ui;
 
+
+    // variables
+    int selected_person_id;
+    QList<QStandardItem*> ql_type;
+    QSqlTableModel *model;
+    QSqlDatabase db;
+    QString fil_fname_lname;
+    QString fil_date;
+
     void loadDataForTreeView(QList<QStandardItem*> &ql_type);
     void bindDataOnView();
+    void showClientData();
+    void searchByLastnameOrFirstname();
+    void searchByTime();
 };
 
 #endif // MAINWINDOW_H

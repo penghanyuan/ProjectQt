@@ -129,7 +129,6 @@ bool ClientDAO::selectAllClients(vector<Client> &clientList)
     query.prepare("SELECT * FROM TClient");
     query.exec();
     while ( query.next() ) {
-
         clientList.push_back(getClientInfo(query));
     }
     if(!clientList.empty())
@@ -201,4 +200,15 @@ bool ClientDAO::deleteClient(int id){
     query.addBindValue(id);
 
     return query.exec();
+}
+
+int ClientDAO::selectMaxId()
+{
+    QSqlQuery query(db);
+    QString strSqlText("SELECT max(Id) FROM TClient");
+    query.prepare(strSqlText);
+    query.exec();
+    while ( query.next() ) {
+        return query.value(0).toInt();
+    }
 }

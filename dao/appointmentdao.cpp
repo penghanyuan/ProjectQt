@@ -1,13 +1,13 @@
 #include "appointmentdao.h"
 
-appointmentDAO::appointmentDAO()
+AppointmentDAO::AppointmentDAO()
 {
     //C_INIT_BD::Creation_BD();
     ConnectionSQL *connection = ConnectionSQL::getConnection();
     db = connection->getDb();
 }
 
-bool appointmentDAO::insertAppointment(Client &cl, Resource &res){
+bool AppointmentDAO::insertAppointment(Client &cl, Resource &res){
 
     QSqlQuery query(db);
 

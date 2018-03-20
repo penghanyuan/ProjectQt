@@ -24,6 +24,7 @@ public:
     bool selectAllClients(vector<Client> &clientList);
     bool modifyClient(Client &client, int id);
     bool deleteClient(int id);
+    int selectMaxId();
 };
 
 #endif // CLIENTDAO_H
