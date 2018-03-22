@@ -49,7 +49,8 @@ void ClientController::getClientByFirstName(vector<Client> &clients, QString fir
 }
 
 
-void ClientController::getClientByDate(vector<Client> &clients, QString date)
+void ClientController::getClientByDate(vector<Client> &clients, QDate s_dateRdv)
 {
-    clientDAO.selectClientListByDate(clients, date, date);
+    QString fil_date_plan = QObject::tr("%1").arg(s_dateRdv.toString("yyyy-MM-dd"));
+    clientDAO.selectClientListByDate(clients, fil_date_plan, fil_date_plan);
 }

@@ -3,6 +3,9 @@
 #include "connectionsql.h"
 #include "models/client.h"
 #include "models/resource.h"
+#include "models/appointment.h"
+#include "dao/resourcedao.h".h"
+
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
@@ -13,6 +16,7 @@ private:
 public:
     AppointmentDAO();
     bool insertAppointment(Client &client, Resource &resource);
+    void selectAppointmentByClientID(int id, vector<Appointment>&v_app);
 
 };
 

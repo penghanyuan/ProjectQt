@@ -10,6 +10,7 @@
 #include "connectionsql.h"
 #include "cool.h"
 #include "editclient.h"
+#include "controller/planning.h"
 
 namespace Ui {
 class MainWindow;

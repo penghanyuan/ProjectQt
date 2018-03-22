@@ -4,9 +4,9 @@
 #include <QDateTime>
 #include "type.h"
 typedef struct {
-    int timeLine[50]; // one cell = 15min
-    int availability[50]; //0 or 1
-    int maxIndex[4];
+    int timeLine[50] = {0}; // one cell = 15min
+    int availability[50] = {0}; //0 or 1
+    int maxIndex[4] = {0};
 
 }ResourceRDVInfo;
 class Resource
@@ -17,7 +17,6 @@ private:
     QString res_lastname;
     Type res_type;
 
-    ResourceRDVInfo resourceRDVInfo;
 public:
     Resource();
     int getRes_id() const;
@@ -28,8 +27,8 @@ public:
     void setRes_lastname(const QString &value);
     Type getRes_type() const;
     void setRes_type(const Type &value);
-    ResourceRDVInfo getResourceRDVInfo() const;
-    void setResourceRDVInfo(const ResourceRDVInfo &value);
+
+    ResourceRDVInfo resourceRDVInfo;
 };
 
 #endif // USER_H

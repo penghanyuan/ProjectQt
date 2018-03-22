@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "login.h"
-#include <QApplication>m
+#include <QApplication>
 #include "c_init_bd.h"
 #include <QSqlQuery>
 #include "connectionsql.h"

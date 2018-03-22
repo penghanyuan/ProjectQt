@@ -15,7 +15,7 @@ public:
     void getAllClient(vector<Client>&clients);
     void getClientByFirstName(vector<Client>&clients,QString firstname);
     void getClientByLastName(vector<Client>&clients,QString firstname);
-    void getClientByDate(vector<Client>&clients, QString date);
+    void getClientByDate(vector<Client>&clients, QDate date);
 
 };
 

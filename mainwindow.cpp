@@ -194,9 +194,9 @@ void MainWindow::searchByTime()
 
 void MainWindow::searchAppointement()
 {
-    QDate s_dateRdv = ui->searchDate->date();
 
-    fil_date_plan = QObject::tr("%1").arg(s_dateRdv.toString("yyyy-MM-dd"));
+
+
 }
 
 
@@ -263,13 +263,14 @@ void MainWindow::on_btn_delete_clicked()
     }
 }
 
-
+/**
+ * @brief planning
+ */
 void MainWindow::on_pushButton_3_clicked()
 {
    vector<Client> v_clients;
-   searchAppointement();
-   ClientController clientController;
+   QDate s_dateRdv = ui->searchDate->date();
+   Planning planning;
+   planning.excuteAlgoPlanning(s_dateRdv);
 
-   clientController.getClientByDate(v_clients, fil_date_plan);
-   qDebug()<<v_clients[2].getCli_firstname();
 }

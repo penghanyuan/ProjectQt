@@ -5,12 +5,25 @@ Planning::Planning()
 
 }
 
-bool Planning::excuteAlgoPlanning(vector<Client>&v_c)
+bool Planning::excuteAlgoPlanning(QDate date)
 {
-    vector<Resource> v_r;
     int i =0;
+    vector<Resource> v_r;
+    vector<Appointment> v_app;
+    clientController.getClientByDate(v_c, date);
+
     for(i = 0;i<v_c.size();i++)
     {
+
+        // prepare appointment
+        int app_i = 0;
+        appointmentController.getAppointmentByClientId(v_c.at(i).getCli_id(),v_app);
+        for(app_i = 0;app_i<v_app.size();app_i++)
+        {
+            v_c.at(i).getCli_v_resources().push_back(v_app.at(app_i).getApp_resource().getRes_id());
+        }
+        // get all resources
+        getClientsResource(i,v_r);
         //for each client
         int j = 0;
         for(j = 0;j<v_r.size();j++)
@@ -21,33 +34,44 @@ bool Planning::excuteAlgoPlanning(vector<Client>&v_c)
             int start = 0;
             if(j!=0)
             {
-                start = v_r.at(j-1).getResourceRDVInfo().maxIndex[i];
-                if(v_r.at(j-1).getResourceRDVInfo().availability[start]!=0)
+                start = v_r.at(j-1).resourceRDVInfo.maxIndex[i];
+                if(v_r.at(j-1).resourceRDVInfo.availability[start]!=0)
                     start++;
             }
 
-            int firstAva = findFirstAvailabile(start,cellNeed,v_r.at(j).getResourceRDVInfo().availability);
+            int firstAva = findFirstAvailabile(start,cellNeed,v_r.at(j).resourceRDVInfo.availability);
             int k;
             for(k = firstAva;k<firstAva+cellNeed;k++)
             {
                 if(total>=15)
                 {
                     total-=15;
-                    v_r.at(j).getResourceRDVInfo().timeLine[k] = 15;
+                    v_r.at(j).resourceRDVInfo.timeLine[k] = 15;
                 }
                 else{
-                    v_r.at(j).getResourceRDVInfo().timeLine[k] = total;
+                    v_r.at(j).resourceRDVInfo.timeLine[k] = total;
                 }
-                v_r.at(j).getResourceRDVInfo().availability[k] = 1;
-                v_r.at(j).getResourceRDVInfo().maxIndex[i] = k;
+                v_r.at(j).resourceRDVInfo.availability[k] = 1;
+                v_r.at(j).resourceRDVInfo.maxIndex[i] = k;
             }
 
         }
 
     }
+    return true;
 }
 
-int findFirstAvailabile(int start,int cellNeed, int list[])
+void Planning::getClientsResource(int i, vector<Resource> &res)
+{
+    res.clear();
+    int j = 0;
+    for(j = 0;j<v_c.at(i).getCli_v_resources().size();j++)
+    {
+        res.push_back(resourceController.getResourceById(v_c.at(i).getCli_v_resources().at(j)));
+    }
+}
+
+int Planning::findFirstAvailabile(int start,int cellNeed, int list[])
 {
     int i = start;
     bool allzero;
@@ -72,7 +96,7 @@ int findFirstAvailabile(int start,int cellNeed, int list[])
     }
     return -1;
 }
-int findFirstZero(int list[])
+int Planning::findFirstZero(int list[])
 {
     int i = 0;
     for(i  = 0;i<50;i++)

@@ -26,10 +26,10 @@ private:
     int cli_priority;
     vector<int> cli_v_resources;
 
-    ClientRDVInfo clientRDVInfo;
-
 public:
     Client();
+    ClientRDVInfo clientRDVInfo;
+
     QString getCli_lastname() const;
     void setCli_lastname(const QString &value);
     QString getCli_firstname() const;
@@ -49,14 +49,12 @@ public:
     int getCli_priority() const;
     void setCli_priority(int value);
 
-    vector<int> getCli_v_resources() const;
+    vector<int>& getCli_v_resources();
     void setCli_v_resources(const vector<int> value);
     int getCli_postcode() const;
     void setCli_postcode(int value);
     int getCli_tel() const;
     void setCli_tel(int value);
-    ClientRDVInfo getClientRDVInfo() const;
-    void setClientRDVInfo(const ClientRDVInfo &value);
 };
 
 #endif // CLIENT_H

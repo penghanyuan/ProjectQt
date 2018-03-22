@@ -90,7 +90,7 @@ void Client::setCli_priority(int value)
     cli_priority = value;
 }
 
-vector<int> Client::getCli_v_resources() const
+vector<int>& Client::getCli_v_resources()
 {
     return cli_v_resources;
 }
@@ -118,16 +118,6 @@ int Client::getCli_tel() const
 void Client::setCli_tel(int value)
 {
     cli_tel = value;
-}
-
-ClientRDVInfo Client::getClientRDVInfo() const
-{
-    return clientRDVInfo;
-}
-
-void Client::setClientRDVInfo(const ClientRDVInfo &value)
-{
-    clientRDVInfo = value;
 }
 
 Client::Client()
