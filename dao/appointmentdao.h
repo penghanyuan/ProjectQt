@@ -17,6 +17,7 @@ public:
     AppointmentDAO();
     bool insertAppointment(Client &client, Resource &resource);
     void selectAppointmentByClientID(int id, vector<Appointment>&v_app);
+    bool deleteAppointmentByClientId(int cli_id);
 
 };
 

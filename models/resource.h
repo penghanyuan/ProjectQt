@@ -29,6 +29,9 @@ public:
     void setRes_type(const Type &value);
 
     ResourceRDVInfo resourceRDVInfo;
+
+    bool operator < (Resource &rs) {return (this->getRes_id() < rs.getRes_id());}
+
 };
 
 #endif // USER_H

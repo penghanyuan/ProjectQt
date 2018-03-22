@@ -18,3 +18,8 @@ void AppointmentController::getAppointmentByClientId(int cli_id, vector<Appointm
 {
     appointmentDAO.selectAppointmentByClientID(cli_id,v_app);
 }
+
+bool AppointmentController::deleteAppointmentByClientId(int cli_id)
+{
+    return appointmentDAO.deleteAppointmentByClientId(cli_id);
+}

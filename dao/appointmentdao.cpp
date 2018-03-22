@@ -24,16 +24,28 @@ void AppointmentDAO::selectAppointmentByClientID(int id,vector<Appointment>&v_ap
 {
     QSqlQuery query(db);
 
-    query.prepare("SELECT * FROM TRdv WHERE Id = ?");
+    query.prepare("SELECT * FROM TRdv WHERE IdClient = ?");
     query.addBindValue(id);
     query.exec();
     ResourceDAO resDAO;
     while(query.next())
     {
         Appointment appointment;
+        appointment.setApp_id(query.value(0).toInt());
         appointment.setApp_resource(resDAO.selectResourceById(query.value(2).toInt()));
         v_app.push_back(appointment);
     }
 
 
+}
+
+bool AppointmentDAO::deleteAppointmentByClientId(int cli_id)
+{
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM TRdv WHERE IdClient = ?");
+
+    query.addBindValue(cli_id);
+
+    return query.exec();
 }

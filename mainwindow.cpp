@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->showClientData();
     ui->treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->planning_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->statusBar->showMessage("You are connected to the system!");
 }
 
@@ -192,12 +193,6 @@ void MainWindow::searchByTime()
 }
 
 
-void MainWindow::searchAppointement()
-{
-
-
-
-}
 
 
 
@@ -264,7 +259,7 @@ void MainWindow::on_btn_delete_clicked()
 }
 
 /**
- * @brief planning
+ * @brief save planning
  */
 void MainWindow::on_pushButton_3_clicked()
 {
@@ -273,4 +268,27 @@ void MainWindow::on_pushButton_3_clicked()
    Planning planning;
    planning.excuteAlgoPlanning(s_dateRdv);
 
+   QString fileName;
+   fileName = QFileDialog::getSaveFileName(this,
+       QObject::tr("Save planning"), "/home/Desktop/Planning.txt", QObject::tr("Text Files (*.txt)"));
+
+   if (!fileName.isNull())
+   {
+       planning.saveFile(fileName);
+   }else{
+
+   }
+
+}
+
+void MainWindow::on_planning_search_clicked()
+{
+    QDate s_dateRdv = ui->searchDate->date();
+    QSqlTableModel *planning_model = new QSqlTableModel(this,db);
+    qDebug()<<s_dateRdv.toString("yyyy-MM-dd");
+    planning_model->setTable("TClient");
+    fil_date = QObject::tr("DateRdv = '%1'").arg(s_dateRdv.toString("yyyy-MM-dd"));
+    planning_model->setFilter(fil_date);
+    planning_model->select();
+    ui->planning_table->setModel(planning_model);
 }

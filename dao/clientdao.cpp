@@ -199,7 +199,9 @@ bool ClientDAO::deleteClient(int id){
 
     query.addBindValue(id);
 
-    return query.exec();
+
+
+    return query.exec()&&appointmentDAO.deleteAppointmentByClientId(id);
 }
 
 int ClientDAO::selectMaxId()

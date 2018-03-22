@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSqlTableModel>
 #include "connectionsql.h"
+#include "controller/appointmentcontroller.h"
 namespace Ui {
 class EditClient;
 }
@@ -29,6 +30,7 @@ private:
     Ui::EditClient *ui;
     QSqlTableModel *model;
     QSqlDatabase db;
+    AppointmentController appointmentController;
     int client_id;
 };
 

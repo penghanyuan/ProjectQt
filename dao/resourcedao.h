@@ -23,7 +23,6 @@ public:
     bool modifyResource(Resource resource);
     bool deleteResource(int id);
     int selectMaxId();
-
 };
 
 #endif // RESOURCEDAO_H

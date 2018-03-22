@@ -2,9 +2,9 @@
 #define CLIENTDAO_H
 #include "models/client.h"
 #include "connectionsql.h"
+#include "dao/appointmentdao.h"
 #include <QSqlQuery>
 #include <QSqlDatabase>
-#include "QMessageBox"
 #include <vector>
 using namespace std;
 
@@ -13,6 +13,7 @@ class ClientDAO
 {
 private:
     QSqlDatabase db;
+    AppointmentDAO appointmentDAO;
 public:
     ClientDAO();
     bool insertClient(Client &client);

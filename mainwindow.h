@@ -47,6 +47,8 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_planning_search_clicked();
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
@@ -72,7 +74,6 @@ private:
     void showClientData();
     void searchByLastnameOrFirstname();
     void searchByTime();
-    void searchAppointement();
 };
 
 #endif // MAINWINDOW_H

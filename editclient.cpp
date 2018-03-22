@@ -45,11 +45,15 @@ void EditClient::setClient_id(int value)
     client_id = value;
 }
 
+/**
+ * @brief delete client
+ */
 void EditClient::on_pushButton_clicked()
 {
     model->setFilter(QObject::tr("Id = %1").arg(this->client_id));
     model->select();
     model->removeRows(0,1);
     model->submit();
+    bool result = appointmentController.deleteAppointmentByClientId(this->client_id);
     accept();
 }

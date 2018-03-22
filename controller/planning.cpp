@@ -1,5 +1,5 @@
 #include "planning.h"
-
+#include <iostream>
 Planning::Planning()
 {
 
@@ -8,66 +8,128 @@ Planning::Planning()
 bool Planning::excuteAlgoPlanning(QDate date)
 {
     int i =0;
-    vector<Resource> v_r;
-    vector<Appointment> v_app;
-    clientController.getClientByDate(v_c, date);
+    //vector<Resource> v_r;
 
+    clientController.getClientByDate(v_c, date);
+    sort(v_c.begin(),v_c.end(),Planning::descend);
+    // prepare appointment
     for(i = 0;i<v_c.size();i++)
     {
 
-        // prepare appointment
         int app_i = 0;
+        vector<Appointment> v_app;
         appointmentController.getAppointmentByClientId(v_c.at(i).getCli_id(),v_app);
         for(app_i = 0;app_i<v_app.size();app_i++)
         {
             v_c.at(i).getCli_v_resources().push_back(v_app.at(app_i).getApp_resource().getRes_id());
         }
-        // get all resources
-        getClientsResource(i,v_r);
+    }
+    // get all resources
+    getClientsResource();
+
+    for(i = 0;i<v_c.size();i++)
+    {
         //for each client
         int j = 0;
-        for(j = 0;j<v_r.size();j++)
+        QMap<int,Resource>::iterator qm_res_it;
+        for(qm_res_it = m_r.begin();qm_res_it!=m_r.end();++qm_res_it)
         {
+            if(!checkResNeeded(i,qm_res_it->getRes_id()))
+                continue;
             // for each resource
             int total = v_c.at(i).getCli_rdv_duration()/v_c.at(i).getCli_v_resources().size();
             int cellNeed = total/15 + (total%15==0?0:1);
             int start = 0;
             if(j!=0)
             {
-                start = v_r.at(j-1).resourceRDVInfo.maxIndex[i];
-                if(v_r.at(j-1).resourceRDVInfo.availability[start]!=0)
+                start = qm_res_it->resourceRDVInfo.maxIndex[i];
+                if(qm_res_it->resourceRDVInfo.availability[start]!=0)
                     start++;
             }
 
-            int firstAva = findFirstAvailabile(start,cellNeed,v_r.at(j).resourceRDVInfo.availability);
+            int firstAva = findFirstAvailabile(start,cellNeed,qm_res_it->resourceRDVInfo.availability);
             int k;
+            v_c.at(i).clientRDVInfo.startIndex.push_back(k);
+            v_c.at(i).clientRDVInfo.cellNeeded.push_back(k);
             for(k = firstAva;k<firstAva+cellNeed;k++)
             {
                 if(total>=15)
                 {
                     total-=15;
-                    v_r.at(j).resourceRDVInfo.timeLine[k] = 15;
+                    // set time for resource
+                    qm_res_it->resourceRDVInfo.timeLine[k] = 15;
                 }
                 else{
-                    v_r.at(j).resourceRDVInfo.timeLine[k] = total;
+                     // set time for resource
+                    qm_res_it->resourceRDVInfo.timeLine[k] = total;
                 }
-                v_r.at(j).resourceRDVInfo.availability[k] = 1;
-                v_r.at(j).resourceRDVInfo.maxIndex[i] = k;
+                qm_res_it->resourceRDVInfo.availability[k] = v_c.at(i).getCli_id();
+                qm_res_it->resourceRDVInfo.maxIndex[i] = k;
             }
-
         }
 
     }
     return true;
 }
 
-void Planning::getClientsResource(int i, vector<Resource> &res)
+void Planning::getClientsResource()
 {
-    res.clear();
+    int i = 0;
     int j = 0;
-    for(j = 0;j<v_c.at(i).getCli_v_resources().size();j++)
+    for(i = 0;i<v_c.size();i++)
     {
-        res.push_back(resourceController.getResourceById(v_c.at(i).getCli_v_resources().at(j)));
+        for(j = 0;j<v_c.at(i).getCli_v_resources().size();j++)
+        {
+            int resid = v_c.at(i).getCli_v_resources().at(j);
+            m_r.insert(resid,resourceController.getResourceById(resid));
+        }
+    }
+
+}
+
+bool Planning::checkResNeeded(int i, int id)
+{
+    for(int j = 0;j<v_c.at(i).getCli_v_resources().size();j++)
+    {
+        if(v_c.at(i).getCli_v_resources()[j]==id)
+            return true;
+    }
+    return false;
+}
+
+void Planning::getPlanning(QTextStream &out)
+{
+    QMap<int,Resource>::iterator m_it;
+
+    for(m_it = m_r.begin();m_it!=m_r.end();++m_it)
+    {
+        // for each resource
+        out<<"Resource:"<<m_it->getRes_id()<<", "<<m_it->getRes_firstname()+" "+m_it->getRes_lastname()<<endl;
+        out<<"Time\t"<<endl;
+        int start = 7;
+        for(int i = 0;i<50;i++)
+        {
+            if((i*15)%60==0)
+                start++;
+            if(m_it->resourceRDVInfo.availability[i]!=0)
+            {
+                out<<QObject::tr("%1:%2, Client %3, duration: %4").arg(start).arg((i*15)%60).arg(m_it->resourceRDVInfo.availability[i]).arg(m_it->resourceRDVInfo.timeLine[i]);
+                out<<endl;
+            }
+
+        }
+        out<<"================"<<endl;
+    }
+}
+
+bool Planning::saveFile(QString filename)
+{
+
+
+    QFile data(filename);
+    if (data.open(QFile::WriteOnly | QIODevice::Truncate)) {
+        QTextStream out(&data);
+        getPlanning(out);
     }
 }
 

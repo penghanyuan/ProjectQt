@@ -7,12 +7,12 @@
 
 int main(int argc, char *argv[])
 {
+    // create database
+    if(!QFile::exists("base_tmp.sqli"))
+        C_INIT_BD::Creation_BD();
     QApplication a(argc, argv);
     MainWindow m;
     Login login;
-
-    // create database
-//    C_INIT_BD::Creation_BD();
 
     //set database connection
     ConnectionSQL *connectionSQL = ConnectionSQL::getConnection();
