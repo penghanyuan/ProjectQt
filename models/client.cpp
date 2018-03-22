@@ -120,6 +120,16 @@ void Client::setCli_tel(int value)
     cli_tel = value;
 }
 
+ClientRDVInfo Client::getClientRDVInfo() const
+{
+    return clientRDVInfo;
+}
+
+void Client::setClientRDVInfo(const ClientRDVInfo &value)
+{
+    clientRDVInfo = value;
+}
+
 Client::Client()
 {
     

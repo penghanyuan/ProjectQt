@@ -41,7 +41,17 @@ void Resource::setRes_type(const Type &value)
     res_type = value;
 }
 
+ResourceRDVInfo Resource::getResourceRDVInfo() const
+{
+    return resourceRDVInfo;
+}
+
+void Resource::setResourceRDVInfo(const ResourceRDVInfo &value)
+{
+    resourceRDVInfo = value;
+}
+
 Resource::Resource()
 {
-
+    
 }

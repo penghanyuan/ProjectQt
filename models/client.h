@@ -4,6 +4,12 @@
 #include <QDate>
 #include <vector>
 using namespace std;
+typedef struct {
+    vector<int> startIndex;
+    vector<int> cellNeeded;
+
+}ClientRDVInfo;
+
 class Client
 {
 private:
@@ -20,6 +26,7 @@ private:
     int cli_priority;
     vector<int> cli_v_resources;
 
+    ClientRDVInfo clientRDVInfo;
 
 public:
     Client();
@@ -48,6 +55,8 @@ public:
     void setCli_postcode(int value);
     int getCli_tel() const;
     void setCli_tel(int value);
+    ClientRDVInfo getClientRDVInfo() const;
+    void setClientRDVInfo(const ClientRDVInfo &value);
 };
 
 #endif // CLIENT_H

@@ -48,7 +48,8 @@ SOURCES += \
     toolbox.cpp \
     cool.cpp \
     editclient.cpp \
-    controller/appointmentcontroller.cpp
+    controller/appointmentcontroller.cpp \
+    controller/planning.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -74,7 +75,8 @@ HEADERS += \
     toolbox.h \
     cool.h \
     editclient.h \
-    controller/appointmentcontroller.h
+    controller/appointmentcontroller.h \
+    controller/planning.h
 
 FORMS += \
         mainwindow.ui \
