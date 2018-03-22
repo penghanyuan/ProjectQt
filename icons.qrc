@@ -3,5 +3,7 @@
         <file>user.jpg</file>
         <file>client.png</file>
         <file>2079.png</file>
+        <file>addclient.png</file>
+        <file>addresource.png</file>
     </qresource>
 </RCC>

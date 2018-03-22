@@ -44,11 +44,14 @@ private slots:
 
     void on_btn_delete_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
     ClientController clientController;
     QStandardItemModel * standardModel;
+    AppointmentController appointmentController;
     Ui::MainWindow *ui;
 
 
@@ -60,11 +63,15 @@ private:
     QString fil_fname_lname;
     QString fil_date;
 
+    QString fil_date_plan;
+
+
     void loadDataForTreeView(QList<QStandardItem*> &ql_type);
     void bindDataOnView();
     void showClientData();
     void searchByLastnameOrFirstname();
     void searchByTime();
+    void searchAppointement();
 };
 
 #endif // MAINWINDOW_H

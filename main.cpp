@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "login.h"
-#include <QApplication>
+#include <QApplication>m
 #include "c_init_bd.h"
 #include <QSqlQuery>
 #include "connectionsql.h"
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     Login login;
 
     // create database
-    //C_INIT_BD::Creation_BD();
+//    C_INIT_BD::Creation_BD();
 
     //set database connection
     ConnectionSQL *connectionSQL = ConnectionSQL::getConnection();

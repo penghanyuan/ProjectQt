@@ -49,3 +49,7 @@ void ClientController::getClientByFirstName(vector<Client> &clients, QString fir
 }
 
 
+void ClientController::getClientByDate(vector<Client> &clients, QString date)
+{
+    clientDAO.selectClientListByDate(clients, date, date);
+}
