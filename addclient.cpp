@@ -74,7 +74,6 @@ void AddClient::stateChanged(int state)
     bSelected = true;
        QString strSelectedData("");
        strSelectedText.clear();
-       QCheckBox *pSenderCheckBox;
        int nCount = pListWidget->count();
        for (int i = 0; i < nCount; ++i)
        {
