@@ -55,12 +55,16 @@ bool ResourcesController::modifyTechnicien(int id, QString lastname, QString fir
     Account account = accountDAO.selectAccountByResourceId(id);
     account.setAcc_username(username);
     account.setAcc_password(password);
-    accountDAO.modifyAccount(account);
+    return accountDAO.modifyAccount(account);
 }
 
 bool ResourcesController::deleteResource(int id)
 {
-    return resourceDAO.deleteResource(id);
+    Resource res = getResourceById(id);
+    if(res.getRes_type().getType_label().compare("Informaticien")==0)
+        return resourceDAO.deleteTechnician(id);
+    else
+        return resourceDAO.deleteResource(id);
 }
 
 void ResourcesController::makeResource(QString lastname, QString firstname, QString type)

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSqlTableModel>
 #include <QSqlQuery>
+#include <QRegExp>
 #include "controller/resourcescontroller.h"
 #include "controller/typecontroller.h"
 #include "controller/clientcontroller.h"
@@ -49,6 +50,8 @@ private slots:
 
     void on_planning_search_clicked();
 
+    void on_s_id_textChanged(const QString &arg1);
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
@@ -72,7 +75,7 @@ private:
     void loadDataForTreeView(QList<QStandardItem*> &ql_type);
     void bindDataOnView();
     void showClientData();
-    void searchByLastnameOrFirstname();
+    void searchByLastnameOrFirstnameOrId();
     void searchByTime();
 };
 

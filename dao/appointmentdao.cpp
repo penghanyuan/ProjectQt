@@ -1,5 +1,5 @@
 #include "appointmentdao.h"
-
+#include "dao/resourcedao.h"
 AppointmentDAO::AppointmentDAO()
 {
     //C_INIT_BD::Creation_BD();

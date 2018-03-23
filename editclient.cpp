@@ -36,7 +36,7 @@ void EditClient::loadClient()
 
 
 /**
- * @brief submit these changes.
+ * @brief submit these changes. save client
  */
 void EditClient::on_submit_clicked()
 {

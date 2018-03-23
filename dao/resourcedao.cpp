@@ -170,12 +170,11 @@ int ResourceDAO::selectMaxId()
  * @param account
  * @return
  */
-bool ResourceDAO::modifyTechnician(Account account){
+bool ResourceDAO::modifyTechnician(Account account)
+{
 
-    QSqlQuery query(db);
-    modifyResource(account.getAcc_resource();
     AccountDAO accDao;
-    return accDao.modifyAccount(account);
+    return modifyResource(account.getAcc_resource())&&(accDao.modifyAccount(account));
 }
 
 
@@ -191,5 +190,5 @@ bool ResourceDAO::deleteTechnician(int id){
 
     query.addBindValue(id);
 
-    return query.exec()&&appointmentDAO.deleteAppointmentByResourceId(id)&&accountDAO.deleteAccount(id);
+    return query.exec()&&accountDAO.deleteAccount(id);
 }

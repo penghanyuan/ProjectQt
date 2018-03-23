@@ -1,5 +1,5 @@
 #include "accountdao.h"
-
+#include "dao/resourcedao.h"
 AccountDAO::AccountDAO()
 {
     ConnectionSQL *connection = ConnectionSQL::getConnection();

@@ -42,12 +42,9 @@ void Login::on_connect_clicked()
                                          QMessageBox::Ok);
             ui->password->clear();
             ui->password->setFocus();
-            login_username.clear();
+
             login_password.clear();
         }
-
-
-
 }
 
 

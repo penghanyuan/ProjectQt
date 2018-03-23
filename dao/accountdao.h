@@ -2,7 +2,7 @@
 #define ACCOUNTDAO_H
 #include "models/account.h"
 #include "connectionsql.h"
-#include "dao/resourcedao.h"
+
 #include <QSqlQuery>
 #include <QSqlDatabase>
 

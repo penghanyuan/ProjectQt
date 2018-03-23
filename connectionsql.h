@@ -5,6 +5,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+/**
+ * @brief The ConnectionSQL class for getting a sql connection
+ */
 class ConnectionSQL
 {
 private:

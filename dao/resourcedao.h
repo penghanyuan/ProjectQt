@@ -1,8 +1,6 @@
 #ifndef RESOURCEDAO_H
 #define RESOURCEDAO_H
 #include "models/resource.h"
-#include "models/account.h"
-#include "models/appointment.h"
 #include "connectionsql.h"
 #include "dao/typedao.h"
 #include "dao/accountdao.h"

@@ -4,7 +4,7 @@
 #include "models/client.h"
 #include "models/resource.h"
 #include "models/appointment.h"
-#include "dao/resourcedao.h"
+
 
 #include <QSqlQuery>
 #include <QSqlDatabase>

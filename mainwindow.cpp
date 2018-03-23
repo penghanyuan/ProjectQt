@@ -64,7 +64,7 @@ void MainWindow::on_actionCool_triggered()
 
 
 /**
- * add a treeview for the list of resources
+ * edie a person
  * @brief on_treeView_doubleClicked
  * @param index
  */
@@ -154,6 +154,7 @@ void MainWindow::showClientData()
     ConnectionSQL *connection = ConnectionSQL::getConnection();
     db = connection->getDb();
 
+    // use a QSqlTableModel
     model = new QSqlTableModel(this,db);
     model->setTable("TClient");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
@@ -173,12 +174,14 @@ void MainWindow::showClientData()
 /**
  * @brief MainWindow::searchByLastnameOrFirstname
  */
-void MainWindow::searchByLastnameOrFirstname()
+void MainWindow::searchByLastnameOrFirstnameOrId()
 {
     QString s_lastname;
     QString s_firstname;
+    QString s_id;
     s_lastname = ui->s_lastname_txt->text();
     s_firstname = ui->s_firstname_txt->text();
+    s_id = ui->s_id->text();
     if(!s_lastname.isEmpty())
     {
         s_lastname = s_lastname+"%";
@@ -191,7 +194,17 @@ void MainWindow::searchByLastnameOrFirstname()
     {
         s_lastname = '%';
     }
-    fil_fname_lname = "Nom LIKE '"+s_lastname+"' or Prenom like '"+s_firstname+"'";
+    if(s_id.isEmpty())
+    {
+        fil_fname_lname = "Nom LIKE '"+s_lastname+"' or Prenom like '"+s_firstname+"'";
+    }
+    else
+    {
+        fil_fname_lname = "Id = "+s_id+" and (Nom LIKE '"+s_lastname+"' or Prenom like '"+s_firstname+"')";
+    }
+
+
+
 }
 
 /**
@@ -235,7 +248,7 @@ void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
  */
 void MainWindow::on_pushButton_clicked()
 {
-    searchByLastnameOrFirstname();
+    searchByLastnameOrFirstnameOrId();
     if(ui->enable_date->isChecked())
     {
         searchByTime();
@@ -311,4 +324,15 @@ void MainWindow::on_planning_search_clicked()
     planning_model->setFilter(fil_date);
     planning_model->select();
     ui->planning_table->setModel(planning_model);
+}
+
+void MainWindow::on_s_id_textChanged(const QString &arg1)
+{
+    QString pattern("^[0-9]*$");
+    QRegExp rx(pattern);
+    bool match = rx.exactMatch(arg1);
+    if(!match)
+    {
+        ui->s_id->clear();
+    }
 }
