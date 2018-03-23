@@ -13,10 +13,17 @@ AddPerson::~AddPerson()
     delete ui;
 }
 
+
+/**
+ * @brief AddPerson::setIs_Edit
+ * @param is
+ */
 void AddPerson::setIs_Edit(bool is)
 {
     this->is_edit = is;
 }
+
+
 
 /**
  * @brief show resource in window
@@ -39,6 +46,11 @@ void AddPerson::showResource(int id)
     }
 }
 
+
+/**
+ * @brief AddPerson::on_person_type_currentIndexChanged
+ * @param arg1
+ */
 void AddPerson::on_person_type_currentIndexChanged(const QString &arg1)
 {
     if(arg1.compare("7.Informaticien")==0)

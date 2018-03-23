@@ -20,6 +20,9 @@ AddClient::~AddClient()
     delete ui;
 }
 
+/**
+ * @brief AddClient::on_client_submit_btn_clicked
+ */
 void AddClient::on_client_submit_btn_clicked()
 {
     on_last_name_txt_editingFinished();
@@ -69,6 +72,11 @@ void AddClient::on_client_submit_btn_clicked()
 
 }
 
+
+/**
+ * @brief AddClient::stateChanged
+ * @param state
+ */
 void AddClient::stateChanged(int state)
 {
     bSelected = true;
@@ -103,7 +111,10 @@ void AddClient::stateChanged(int state)
        bSelected = false;
 }
 
-
+/**
+ * @brief AddClient::textChanged
+ * @param text
+ */
 void AddClient::textChanged(const QString &text)
 {
     if(pLineEdit->text().isEmpty()){
@@ -118,6 +129,9 @@ void AddClient::textChanged(const QString &text)
     }
 }
 
+/**
+ * @brief AddClient::on_last_name_txt_editingFinished
+ */
 void AddClient::on_last_name_txt_editingFinished()
 {
     if(ui->last_name_txt->text().isEmpty()){
@@ -131,6 +145,9 @@ void AddClient::on_last_name_txt_editingFinished()
 }
 
 
+/**
+ * @brief AddClient::on_first_name_txt_editingFinished
+ */
 void AddClient::on_first_name_txt_editingFinished()
 {
     if(ui->first_name_txt->text().isEmpty()){
@@ -144,6 +161,10 @@ void AddClient::on_first_name_txt_editingFinished()
 
 }
 
+
+/**
+ * @brief AddClient::on_city_txt_editingFinished
+ */
 void AddClient::on_city_txt_editingFinished()
 {
     if(ui->city_txt->text().isEmpty()){
@@ -156,6 +177,10 @@ void AddClient::on_city_txt_editingFinished()
     ui->city_txt->setText(ToolBox::firstToUpper(ui->city_txt->text()));
 }
 
+
+/**
+ * @brief AddClient::on_address_txt_editingFinished
+ */
 void AddClient::on_address_txt_editingFinished()
 {
     if(ui->address_txt->text().isEmpty()){
@@ -167,6 +192,10 @@ void AddClient::on_address_txt_editingFinished()
     }
 }
 
+
+/**
+ * @brief AddClient::on_postcode_txt_editingFinished
+ */
 void AddClient::on_postcode_txt_editingFinished()
 {
     if(ui->postcode_txt->text().isEmpty()){
@@ -179,6 +208,9 @@ void AddClient::on_postcode_txt_editingFinished()
 }
 
 
+/**
+ * @brief AddClient::on_appointment_duration_txt_editingFinished
+ */
 void AddClient::on_appointment_duration_txt_editingFinished()
 {
     if(ui->appointment_duration_txt->text().isEmpty()){
@@ -190,6 +222,10 @@ void AddClient::on_appointment_duration_txt_editingFinished()
     }
 }
 
+
+/**
+ * @brief AddClient::createMultiCombo
+ */
 void AddClient::createMultiCombo()
 {
     // get all aviliable resources and add to list

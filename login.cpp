@@ -21,6 +21,9 @@ Login::~Login()
     delete ui;
 }
 
+/**
+ * @brief Login::on_connect_clicked
+ */
 void Login::on_connect_clicked()
 {
     AccountController accountController;
@@ -47,6 +50,10 @@ void Login::on_connect_clicked()
 
 }
 
+
+/**
+ * @brief Login::savecfg  save the login information: username, password
+ */
 void Login::savecfg()
 {
     QString path = "login.ini";
@@ -59,7 +66,9 @@ void Login::savecfg()
 
 }
 
-
+/**
+ * @brief Login::loadcfg save the login information: username, password
+ */
 void Login::loadcfg()
 {
     QString path = "login.ini";
@@ -72,6 +81,10 @@ void Login::loadcfg()
 
 }
 
+/**
+ * @brief Login::on_username_textEdited
+ * @param arg1
+ */
 void Login::on_username_textEdited(const QString &arg1)
 {
     login_username = arg1;

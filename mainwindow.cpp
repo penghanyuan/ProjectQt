@@ -22,6 +22,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// "and client", "add resource" button trigger are as follows:
 void MainWindow::on_actionAdd_Client_triggered()
 {
     AddClient add_client;
@@ -54,8 +55,17 @@ void MainWindow::on_actionAdd_Person_Icon_triggered()
     MainWindow::on_actionAdd_Person_triggered();
 }
 
+
+void MainWindow::on_actionCool_triggered()
+{
+    Cool cool;
+    cool.exec();
+}
+
+
 /**
- * @brief edit a person
+ * add a treeview for the list of resources
+ * @brief on_treeView_doubleClicked
  * @param index
  */
 void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
@@ -71,12 +81,12 @@ void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
    // qDebug()<<"id "+standardModel->itemData(index).values()[1].toString();
 }
 
-void MainWindow::on_actionCool_triggered()
-{
-    Cool cool;
-    cool.exec();
-}
 
+
+/**
+ * @brief MainWindow::loadDataForTreeView
+ * @param qlist_type
+ */
 void MainWindow::loadDataForTreeView(QList<QStandardItem*> &qlist_type)
 {
     vector<Resource> v_resources;
@@ -136,6 +146,9 @@ void MainWindow::bindDataOnView()
     ui->treeView->setModel(standardModel);
 }
 
+/**
+ * @brief MainWindow::showClientData
+ */
 void MainWindow::showClientData()
 {
     ConnectionSQL *connection = ConnectionSQL::getConnection();
@@ -195,7 +208,11 @@ void MainWindow::searchByTime()
 
 
 
-
+/**
+ * The double clicks actions in the tableview: to edit the informations of a client
+ * @brief MainWindow::on_tableView_doubleClicked
+ * @param index
+ */
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
     EditClient editClient;
@@ -248,7 +265,10 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index)
 
 }
 
-
+/**
+ * delete a resource
+ * @brief MainWindow::on_btn_delete_clicked
+ */
 void MainWindow::on_btn_delete_clicked()
 {
     if(resourceController.deleteResource(selected_person_id))

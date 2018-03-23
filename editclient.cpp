@@ -13,11 +13,19 @@ EditClient::~EditClient()
     delete ui;
 }
 
+
+/**
+ * load a Client from the database to the QSqlTableModel.
+ * @method loadClient
+ * @return {void}.
+ */
 void EditClient::loadClient()
 {
+    //connection to the database
     ConnectionSQL *connection = ConnectionSQL::getConnection();
     db = connection->getDb();
 
+    //prepare model for tableview
     model = new QSqlTableModel(this,db);
     model->setTable("TClient");
     model->setFilter(QObject::tr("Id = %1").arg(this->client_id));
@@ -27,6 +35,9 @@ void EditClient::loadClient()
 }
 
 
+/**
+ * @brief submit these changes.
+ */
 void EditClient::on_submit_clicked()
 {
     model->database().transaction();
@@ -40,6 +51,10 @@ void EditClient::on_submit_clicked()
     accept();
 }
 
+
+/**
+ * @brief set the client'id
+ */
 void EditClient::setClient_id(int value)
 {
     client_id = value;

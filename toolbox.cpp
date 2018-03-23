@@ -4,7 +4,11 @@ ToolBox::ToolBox()
 {
 
 }
-
+/**
+ * @brief ToolBox::firstToUpper
+ * @param string
+ * @return the new string
+ */
 QString ToolBox::firstToUpper(QString string)
 {
     QString text = string;

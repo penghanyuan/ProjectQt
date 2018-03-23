@@ -7,6 +7,11 @@ TypeDAO::TypeDAO()
     db = connection->getDb();
 }
 
+/**
+ * @brief TypeDAO::selectTypeById
+ * @param id
+ * @return
+ */
 Type TypeDAO::selectTypeById(int id)
 {
     QSqlQuery query(db);
@@ -25,6 +30,12 @@ Type TypeDAO::selectTypeById(int id)
 
 }
 
+
+/**
+ * @brief TypeDAO::selectAllType
+ * @param types
+ * @return
+ */
 bool TypeDAO::selectAllType(vector<Type> &types)
 {
     QSqlQuery query(db);
@@ -49,6 +60,12 @@ bool TypeDAO::selectAllType(vector<Type> &types)
     }
 }
 
+
+/**
+ * @brief TypeDAO::insertType
+ * @param type
+ * @return
+ */
 bool TypeDAO::insertType(Type &type){
     
     QSqlQuery query(db);

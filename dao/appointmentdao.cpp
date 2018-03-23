@@ -7,6 +7,13 @@ AppointmentDAO::AppointmentDAO()
     db = connection->getDb();
 }
 
+
+/**
+ * @brief AppointmentDAO::insertAppointment
+ * @param cl
+ * @param res
+ * @return
+ */
 bool AppointmentDAO::insertAppointment(Client &cl, Resource &res){
 
     QSqlQuery query(db);
@@ -20,6 +27,12 @@ bool AppointmentDAO::insertAppointment(Client &cl, Resource &res){
     query.exec();
 }
 
+
+/**
+ * @brief AppointmentDAO::selectAppointmentByClientID
+ * @param id
+ * @param v_app
+ */
 void AppointmentDAO::selectAppointmentByClientID(int id,vector<Appointment>&v_app)
 {
     QSqlQuery query(db);
@@ -39,6 +52,12 @@ void AppointmentDAO::selectAppointmentByClientID(int id,vector<Appointment>&v_ap
 
 }
 
+
+/**
+ * @brief AppointmentDAO::deleteAppointmentByClientId
+ * @param cli_id
+ * @return
+ */
 bool AppointmentDAO::deleteAppointmentByClientId(int cli_id)
 {
     QSqlQuery query(db);
@@ -46,6 +65,23 @@ bool AppointmentDAO::deleteAppointmentByClientId(int cli_id)
     query.prepare("DELETE FROM TRdv WHERE IdClient = ?");
 
     query.addBindValue(cli_id);
+
+    return query.exec();
+}
+
+
+/**
+ * @brief AppointmentDAO::deleteAppointmentByResourceId
+ * @param res_id
+ * @return
+ */
+bool AppointmentDAO::deleteAppointmentByResourceId(int res_id)
+{
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM TRdv WHERE IdRessource = ?");
+
+    query.addBindValue(res_id);
 
     return query.exec();
 }

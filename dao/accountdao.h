@@ -17,6 +17,7 @@ public:
     Account selectAccountByUsername(QString username);
     Account selectAccountByResourceId(int id);
     bool modifyAccount(Account account);
+    bool deleteAccount(int idRes);
 };
 
 #endif // ACCOUNTDAO_H

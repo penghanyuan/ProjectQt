@@ -4,7 +4,22 @@ ClientController::ClientController()
 {
 
 }
-
+/**
+ * Add a client with all the informations collected from the user input
+ * @brief ClientController::addClient
+ * @param lastname
+ * @param firstname
+ * @param address
+ * @param city
+ * @param postcode
+ * @param tel
+ * @param comment
+ * @param rdv_date
+ * @param rdv_duration
+ * @param res_string
+ * @param priority
+ * @return
+ */
 bool ClientController::addClient(QString lastname, QString firstname, QString address, QString city, QString postcode, QString tel, QString comment, QDate rdv_date, QString rdv_duration, QString res_string, int priority)
 {
     bool result;
@@ -38,17 +53,31 @@ bool ClientController::addClient(QString lastname, QString firstname, QString ad
 
 }
 
+
+/**
+ * @brief ClientController::getAllClient
+ * @param clients
+ */
 void ClientController::getAllClient(vector<Client> &clients)
 {
     clientDAO.selectAllClients(clients);
 }
 
+/**
+ * @brief ClientController::getClientByFirstName
+ * @param clients
+ * @param firstname
+ */
 void ClientController::getClientByFirstName(vector<Client> &clients, QString firstname)
 {
     clientDAO.selectClientListByFirstname(firstname,clients);
 }
 
-
+/**
+ * @brief ClientController::getClientByDate
+ * @param clients
+ * @param s_dateRdv
+ */
 void ClientController::getClientByDate(vector<Client> &clients, QDate s_dateRdv)
 {
     QString fil_date_plan = QObject::tr("%1").arg(s_dateRdv.toString("yyyy-MM-dd"));
