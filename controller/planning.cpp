@@ -4,7 +4,11 @@ Planning::Planning()
 {
 
 }
-
+/**
+ * @brief Planning::excuteAlgoPlanning
+ * @param date
+ * @return
+ */
 bool Planning::excuteAlgoPlanning(QDate date)
 {
     int i =0;
@@ -72,6 +76,9 @@ bool Planning::excuteAlgoPlanning(QDate date)
     return true;
 }
 
+/**
+ * @brief Planning::getClientsResource
+ */
 void Planning::getClientsResource()
 {
     int i = 0;
@@ -87,6 +94,12 @@ void Planning::getClientsResource()
 
 }
 
+/**
+ * @brief Planning::checkResNeeded
+ * @param i
+ * @param id
+ * @return
+ */
 bool Planning::checkResNeeded(int i, int id)
 {
     for(int j = 0;j<v_c.at(i).getCli_v_resources().size();j++)
@@ -97,6 +110,11 @@ bool Planning::checkResNeeded(int i, int id)
     return false;
 }
 
+
+/**
+ * @brief Planning::getPlanning
+ * @param out
+ */
 void Planning::getPlanning(QTextStream &out)
 {
     QMap<int,Resource>::iterator m_it;
@@ -122,6 +140,12 @@ void Planning::getPlanning(QTextStream &out)
     }
 }
 
+
+/**
+ * @brief Planning::saveFile
+ * @param filename
+ * @return
+ */
 bool Planning::saveFile(QString filename)
 {
 
@@ -133,6 +157,13 @@ bool Planning::saveFile(QString filename)
     }
 }
 
+/**
+ * @brief Planning::findFirstAvailabile
+ * @param start
+ * @param cellNeed
+ * @param list
+ * @return
+ */
 int Planning::findFirstAvailabile(int start,int cellNeed, int list[])
 {
     int i = start;
@@ -158,6 +189,12 @@ int Planning::findFirstAvailabile(int start,int cellNeed, int list[])
     }
     return -1;
 }
+
+/**
+ * @brief Planning::findFirstZero
+ * @param list
+ * @return
+ */
 int Planning::findFirstZero(int list[])
 {
     int i = 0;

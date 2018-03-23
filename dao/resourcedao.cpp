@@ -7,7 +7,11 @@ ResourceDAO::ResourceDAO()
     db = connection->getDb();
 }
 
-
+/**
+ * @brief ResourceDAO::insertResource
+ * @param res
+ * @return bool value if the operation is done succesfully.
+ */
 bool ResourceDAO::insertResource(Resource res){
 
     QSqlQuery query(db);
@@ -24,6 +28,12 @@ bool ResourceDAO::insertResource(Resource res){
 
 }
 
+
+/**
+ * @brief ResourceDAO::insertTechnician
+ * @param ac
+ * @return bool value if the operation is done succesfully.
+ */
 bool ResourceDAO::insertTechnician(Account ac){
 
     QSqlQuery query(db);
@@ -36,6 +46,11 @@ bool ResourceDAO::insertTechnician(Account ac){
 }
 
 
+/**
+ * @brief ResourceDAO::selectAllResources
+ * @param resources
+ * @return bool value if the operation is done succesfully.
+ */
 bool ResourceDAO::selectAllResources(vector<Resource> &resources){
 
     TypeDAO typeDAO;
@@ -66,6 +81,11 @@ bool ResourceDAO::selectAllResources(vector<Resource> &resources){
     }
 }
 
+/**
+ * @brief ResourceDAO::selectResourceById
+ * @param id
+ * @return the resource object with the given id
+ */
 Resource ResourceDAO::selectResourceById(int id)
 {
     TypeDAO typeDAO;
@@ -91,7 +111,11 @@ Resource ResourceDAO::selectResourceById(int id)
 
 
 
-
+/**
+ * @brief ResourceDAO::modifyResource
+ * @param res
+ * @return
+ */
 bool ResourceDAO::modifyResource(Resource res){
 
     QSqlQuery query(db);
@@ -108,6 +132,11 @@ bool ResourceDAO::modifyResource(Resource res){
     return query.exec();
 }
 
+/**
+ * @brief ResourceDAO::deleteResource
+ * @param id
+ * @return
+ */
 bool ResourceDAO::deleteResource(int id){
 
     QSqlQuery query(db);
@@ -116,9 +145,14 @@ bool ResourceDAO::deleteResource(int id){
 
     query.addBindValue(id);
 
-    return query.exec();
+    return query.exec()&&appointmentDAO.deleteAppointmentByResourceId(id);
 }
 
+
+/**
+ * @brief ResourceDAO::selectMaxId
+ * @return the mamimum id amont the resources
+ */
 int ResourceDAO::selectMaxId()
 {
     QSqlQuery query(db);
@@ -128,4 +162,34 @@ int ResourceDAO::selectMaxId()
     while ( query.next() ) {
         return query.value(0).toInt();
     }
+}
+
+
+/**
+ * @brief ResourceDAO::modifyTechnician
+ * @param account
+ * @return
+ */
+bool ResourceDAO::modifyTechnician(Account account){
+
+    QSqlQuery query(db);
+    modifyResource(account.getAcc_resource();
+    AccountDAO accDao;
+    return accDao.modifyAccount(account);
+}
+
+
+/**
+ * @brief ResourceDAO::deleteTechnician
+ * @param id
+ * @return
+ */
+bool ResourceDAO::deleteTechnician(int id){
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM TRessource WHERE Id = ?");
+
+    query.addBindValue(id);
+
+    return query.exec()&&appointmentDAO.deleteAppointmentByResourceId(id)&&accountDAO.deleteAccount(id);
 }

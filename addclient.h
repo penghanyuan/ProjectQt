@@ -22,20 +22,20 @@ public:
     ~AddClient();
 
 private slots:
+
+    //listen to the action of commit button
     void on_client_submit_btn_clicked();
+
+    //listen to the state changes of listbox
     void stateChanged(int state);
     void textChanged(const QString &text);
 
+    //checkout if user has fill all of the required blanks
     void on_last_name_txt_editingFinished();
-
     void on_first_name_txt_editingFinished();
-
     void on_city_txt_editingFinished();
-
     void on_address_txt_editingFinished();
-
     void on_postcode_txt_editingFinished();
-
     void on_appointment_duration_txt_editingFinished();
 
 private:

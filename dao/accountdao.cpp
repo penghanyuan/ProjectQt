@@ -6,6 +6,12 @@ AccountDAO::AccountDAO()
     db = connection->getDb();
 }
 
+
+/**
+ * @brief selectAccountByUsername
+ * @param {QString} username the username of the account
+ * @return {Account} get the account object who's username is as the username given.
+ */
 Account AccountDAO::selectAccountByUsername(QString username)
 {
     ResourceDAO resDAO;
@@ -28,6 +34,12 @@ Account AccountDAO::selectAccountByUsername(QString username)
     return a;
 }
 
+
+/**
+ * @brief selectAccountByResourceId
+ * @param {int} id resource id to select by
+ * @return {Account} get the account object of this id.
+ */
 Account AccountDAO::selectAccountByResourceId(int id)
 {
     ResourceDAO resDAO;
@@ -50,11 +62,50 @@ Account AccountDAO::selectAccountByResourceId(int id)
     return a;
 }
 
+
+/**
+ * @brief modifyAccount
+ * @param {Account} account an account objet to be modified
+ * @return {bool} return true if this operation was done correctly.
+ */
 bool AccountDAO::modifyAccount(Account account)
 {
-    // TODO
+    QSqlQuery query(db);
+
+    query.prepare("UPDATE TCompte "
+                  "SET IdRessource = ? , Login = ? , MdP = ? WHERE Id = ?");
+
+    query.addBindValue(account.getAcc_resource().getRes_id());
+    query.addBindValue(account.getAcc_username());
+    query.addBindValue(account.getAcc_password());
+    query.addBindValue(account.getAcc_id());
+
+    return query.exec();
 }
 
+
+
+/**
+ * @brief deleteAccount
+ * @param idRes resource id of this account
+ * @return return true if this operation was done correctly.
+ */
+bool AccountDAO::deleteAccount(int idRes){
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM TCompte WHERE IdRessource = ?");
+
+    query.addBindValue(idRes);
+
+    return query.exec();
+}
+
+
+/**
+ * @brief insertAccount
+ * @param acc a new account object who comes from the user input.
+ * @return return true if this operation was done correctly.
+ */
 bool AccountDAO::insertAccount(Account acc){
     
     QSqlQuery query(db);

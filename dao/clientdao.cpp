@@ -7,6 +7,11 @@ ClientDAO::ClientDAO()
     db = connection->getDb();
 }
 
+/**
+ * @brief ClientDAO::insertClient
+ * @param cl
+ * @return bool value if the operation is done correctly.
+ */
 bool ClientDAO::insertClient(Client &cl){
 
     QSqlQuery query(db);
@@ -31,6 +36,12 @@ bool ClientDAO::insertClient(Client &cl){
 
 }
 
+
+/**
+ * @brief ClientDAO::getClientInfo
+ * @param query
+ * @return A client obejct as a result by query
+ */
 Client ClientDAO::getClientInfo(QSqlQuery query){
 
     int id = query.value(0).toInt();
@@ -60,6 +71,13 @@ Client ClientDAO::getClientInfo(QSqlQuery query){
 
     return c;
 }
+
+
+/**
+ * @brief ClientDAO::selectClientById
+ * @param id
+ * @return A client obejct with this id
+ */
 Client ClientDAO::selectClientById(int id)
 {
 
@@ -74,7 +92,12 @@ Client ClientDAO::selectClientById(int id)
 
 }
 
-
+/**
+ * @brief ClientDAO::selectClientListByLastname
+ * @param value
+ * @param clientList
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::selectClientListByLastname(QString value, vector<Client> &clientList){
 
     QSqlQuery query(db);
@@ -98,6 +121,12 @@ bool ClientDAO::selectClientListByLastname(QString value, vector<Client> &client
 }
 
 
+/**
+ * @brief ClientDAO::selectClientListByFirstname
+ * @param value
+ * @param clientList
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::selectClientListByFirstname(QString value, vector<Client> &clientList){
 
     QSqlQuery query(db);
@@ -121,7 +150,11 @@ bool ClientDAO::selectClientListByFirstname(QString value, vector<Client> &clien
 }
 
 
-
+/**
+ * @brief ClientDAO::selectAllClients
+ * @param clientList
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::selectAllClients(vector<Client> &clientList)
 {
 
@@ -142,7 +175,13 @@ bool ClientDAO::selectAllClients(vector<Client> &clientList)
 }
 
 
-
+/**
+ * @brief ClientDAO::selectClientListByDate
+ * @param clientList
+ * @param rdvBeginDate
+ * @param rdvEndDate
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::selectClientListByDate(vector<Client> &clientList, QString rdvBeginDate, QString rdvEndDate){
     QSqlQuery query(db);
     query.prepare("SELECT * FROM TClient WHERE DateRdv BETWEEN ? AND ?  ");
@@ -167,7 +206,12 @@ bool ClientDAO::selectClientListByDate(vector<Client> &clientList, QString rdvBe
 
 }
 
-
+/**
+ * @brief ClientDAO::modifyClient
+ * @param cl
+ * @param id
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::modifyClient(Client &cl, int id){
 
     QSqlQuery query(db);
@@ -191,6 +235,12 @@ bool ClientDAO::modifyClient(Client &cl, int id){
     return query.exec();
 }
 
+
+/**
+ * @brief ClientDAO::deleteClient
+ * @param id
+ * @return bool value if the operation is done succesfully.
+ */
 bool ClientDAO::deleteClient(int id){
 
     QSqlQuery query(db);
@@ -204,6 +254,11 @@ bool ClientDAO::deleteClient(int id){
     return query.exec()&&appointmentDAO.deleteAppointmentByClientId(id);
 }
 
+
+/**
+ * @brief ClientDAO::selectMaxId
+ * @return the maximum id amont the clients
+ */
 int ClientDAO::selectMaxId()
 {
     QSqlQuery query(db);

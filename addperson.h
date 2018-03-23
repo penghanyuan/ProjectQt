@@ -23,24 +23,27 @@ public:
     ~AddPerson();
     void setIs_Edit(bool);
     void showResource(int id);
+
 private slots:
     void on_person_type_currentIndexChanged(const QString &arg1);
 
+    //checkout if user has fill all of the required blanks
     void on_last_name_txt_editingFinished();
-
     void on_first_name_txt_editingFinished();
-
     void on_t_username_editingFinished();
-
     void on_t_password_editingFinished();
-
     void on_person_submit_btn_clicked();
 
 private:
+    // controllers
     TypeController typeController;
     AccountController accountController;
     ResourcesController resourceController;
+
+    // ui
     Ui::AddPerson *ui;
+
+    // variables
     bool lastname_isempty;
     bool first_isempty;
     bool username_isempty;

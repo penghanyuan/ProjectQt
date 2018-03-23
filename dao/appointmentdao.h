@@ -4,7 +4,7 @@
 #include "models/client.h"
 #include "models/resource.h"
 #include "models/appointment.h"
-#include "dao/resourcedao.h".h"
+#include "dao/resourcedao.h"
 
 #include <QSqlQuery>
 #include <QSqlDatabase>
@@ -17,7 +17,9 @@ public:
     AppointmentDAO();
     bool insertAppointment(Client &client, Resource &resource);
     void selectAppointmentByClientID(int id, vector<Appointment>&v_app);
+    void selectAppointmentByResourceID(int id, vector<Appointment>&v_app);
     bool deleteAppointmentByClientId(int cli_id);
+    bool deleteAppointmentByResourceId(int cli_id);
 
 };
 
