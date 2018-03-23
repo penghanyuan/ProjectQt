@@ -2,7 +2,7 @@
 #define ADDPERSON_H
 
 #include <QDialog>
-#include <QStringLiteral>
+
 #include <QMessageBox>
 #include "controller/typecontroller.h"
 #include "controller/accountcontroller.h"

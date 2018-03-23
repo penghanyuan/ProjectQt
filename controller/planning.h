@@ -21,7 +21,7 @@ public:
     bool saveFile(QString filename);
 
 private:
-    static bool descend(Client &c1,Client &c2){
+    static bool descend(Client c1,Client c2){
         int i = c1.getCli_priority()*100+c1.getCli_v_resources().size()*10+c1.getCli_rdv_duration();
         int j = c2.getCli_priority()*100+c2.getCli_v_resources().size()*10+c2.getCli_rdv_duration();
         return (i>j);

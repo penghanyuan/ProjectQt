@@ -24,6 +24,7 @@ private:
     QDate cli_rdv_date;
     int cli_rdv_duration;
     int cli_priority;
+    QString remarque;
     vector<int> cli_v_resources;
 
 public:
@@ -55,6 +56,8 @@ public:
     void setCli_postcode(int value);
     int getCli_tel() const;
     void setCli_tel(int value);
+    QString getRemarque() const;
+    void setRemarque(const QString &value);
 };
 
 #endif // CLIENT_H

@@ -8,7 +8,7 @@ AddClient::AddClient(QDialog *parent) :
 {
     // set ui
     ui->setupUi(this);
-    ui->appointment_date->setDateRange(QDate::currentDate(),QDate::currentDate().addDays(36500));
+    ui->appointment_date->setDateRange(QDate::currentDate(),QDate::currentDate().addDays(30));
     ui->appointment_duration_txt->setValidator(new QIntValidator);
     ui->postcode_txt->setValidator(new QIntValidator);
     ui->phone_number_txt->setValidator(new QIntValidator);
@@ -41,6 +41,7 @@ void AddClient::on_client_submit_btn_clicked()
     QDate rdv_date;
     QString rdv_duration;
     QString res_string;
+    QString remarque;
     int priority;
 
     if(lastname_isempty||first_isempty||address_isempty||city_isempty||pc_isempty||duration_isempty||res_isempty)
@@ -62,6 +63,9 @@ void AddClient::on_client_submit_btn_clicked()
         res_string = pLineEdit->text();
         tel = ui->phone_number_txt->text();
         comment = ui->comment_txt->toPlainText();
+        remarque = ui->client_remarque->text();
+
+        comment = comment+"\n"+remarque;
         //add if!!!
         clientController.addClient(lastname,firstname,address,city,postcode,tel,comment,rdv_date,rdv_duration,res_string,priority);
         QMessageBox::information(this, tr("Successful"),

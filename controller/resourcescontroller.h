@@ -27,6 +27,7 @@ public:
     bool modifyTechnicien(int id, QString lastname,QString firstname,QString type,QString username, QString password);
     bool deleteResource(int id);
     bool deleteTechnicien(int id);
+    bool addResource(QString lastname, QString firstname, Type type);
 };
 
 #endif // RESOURCESCONTROLLER_H

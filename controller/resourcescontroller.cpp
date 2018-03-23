@@ -26,6 +26,8 @@ bool ResourcesController::addResource(QString lastname, QString firstname, QStri
     return result;
 }
 
+
+
 bool ResourcesController::addTechnicien(QString lastname, QString firstname, QString type, QString username, QString password)
 {
     addResource(lastname,firstname,type);
@@ -65,6 +67,16 @@ bool ResourcesController::deleteResource(int id)
         return resourceDAO.deleteTechnician(id);
     else
         return resourceDAO.deleteResource(id);
+}
+
+bool ResourcesController::addResource(QString lastname, QString firstname, Type type)
+{
+    this->resource.setRes_lastname(lastname);
+    this->resource.setRes_firstname(firstname);
+    this->resource.setRes_type(type);
+    bool result = resourceDAO.insertResource(this->resource);
+    this->resource.setRes_id(resourceDAO.selectMaxId());
+    return result;
 }
 
 void ResourcesController::makeResource(QString lastname, QString firstname, QString type)

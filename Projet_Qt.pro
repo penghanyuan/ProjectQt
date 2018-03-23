@@ -49,7 +49,9 @@ SOURCES += \
     cool.cpp \
     editclient.cpp \
     controller/appointmentcontroller.cpp \
-    controller/planning.cpp
+    controller/planning.cpp \
+    adddivers.cpp \
+    models/count.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -76,7 +78,9 @@ HEADERS += \
     cool.h \
     editclient.h \
     controller/appointmentcontroller.h \
-    controller/planning.h
+    controller/planning.h \
+    adddivers.h \
+    models/count.h
 
 FORMS += \
         mainwindow.ui \
@@ -84,7 +88,8 @@ FORMS += \
     addclient.ui \
     addperson.ui \
     cool.ui \
-    editclient.ui
+    editclient.ui \
+    adddivers.ui
 
 RESOURCES += \
     icons.qrc

@@ -1,5 +1,6 @@
 #include "appointmentdao.h"
 #include "dao/resourcedao.h"
+
 AppointmentDAO::AppointmentDAO()
 {
     //C_INIT_BD::Creation_BD();
@@ -21,6 +22,7 @@ bool AppointmentDAO::insertAppointment(Client &cl, Resource &res){
     query.prepare("INSERT INTO TRdv"
                              "(IdClient, IdRessource) "
                              "VALUES (:IdClient, :IdRessource)");
+
     query.bindValue(":IdRessource", res.getRes_id());
     query.bindValue(":IdClient", cl.getCli_id());
 

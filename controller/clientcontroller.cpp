@@ -48,9 +48,6 @@ bool ClientController::addClient(QString lastname, QString firstname, QString ad
     }
     client.setCli_v_resources(v_res_id);
     return result;
-    //qDebug()<<clientDAO.selectClientById(8).getCli_firstname();
-    //qDebug()<<clientDAO.selectClientById(7).getCli_firstname();
-
 }
 
 

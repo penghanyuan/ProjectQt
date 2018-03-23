@@ -2,7 +2,9 @@
 #include "ui_mainwindow.h"
 #include "addclient.h"
 #include "addperson.h"
+#include "adddivers.h"
 #include <iostream>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -45,7 +47,7 @@ void MainWindow::on_actionAdd_Person_triggered()
     add_person.setIs_Edit(false);
     if(add_person.exec()==QDialog::Accepted)
     {
-        ui->statusBar->showMessage("You have added one person");
+        ui->statusBar->showMessage("Ajout de person terminé");
         this->bindDataOnView();
     }
 }
@@ -218,6 +220,28 @@ void MainWindow::searchByTime()
     fil_date = QObject::tr("DateRdv BETWEEN '%1' AND '%2'").arg(s_fdate.toString("yyyy-MM-dd")).arg(s_edate.toString("yyyy-MM-dd"));
 }
 
+void MainWindow::saveResource(QString filename)
+{
+    vector<Resource> v_resources;
+    // get info from DB
+    resourceController.getAllResources(v_resources);
+    QFile data(filename);
+    if (data.open(QFile::WriteOnly | QIODevice::Truncate)) {
+        QTextStream out(&data);
+        out<<"<TRessource>"<<"\n";
+        for(int i = 0;i<v_resources.size();i++)
+        {
+            Resource res = v_resources.at(i);
+            out<<QObject::tr("<Resource id='%1'>").arg(res.getRes_id());
+            out<<"\n";
+            out<<"<Nom>"+res.getRes_lastname()+"</Nom>"<<"\n";
+            out<<"<Prenom>"+res.getRes_lastname()+"</Prenom>"<<"\n";
+            out<<"</Resource>"<<"\n";
+        }
+        out<<"</TRessource>"<<"\n";
+    }
+}
+
 
 
 
@@ -253,12 +277,12 @@ void MainWindow::on_pushButton_clicked()
     {
         searchByTime();
         qDebug()<<QObject::tr("(%1) AND (%2)").arg(fil_fname_lname).arg(fil_date);
-        model->setFilter(QObject::tr("(%1) AND (%2)").arg(fil_fname_lname).arg(fil_date));
+        model->setFilter(QObject::tr("(%1) AND (%2) ORDER BY Nom").arg(fil_fname_lname).arg(fil_date));
 
     }
     else
     {
-        model->setFilter(QObject::tr("%1").arg(fil_fname_lname));
+        model->setFilter(QObject::tr("%1 ORDER BY Nom" ).arg(fil_fname_lname));
     }
     model->select();
 
@@ -334,5 +358,32 @@ void MainWindow::on_s_id_textChanged(const QString &arg1)
     if(!match)
     {
         ui->s_id->clear();
+    }
+}
+
+void MainWindow::on_actionAdd_Divers_triggered()
+{
+      addDivers diver;
+      if(diver.exec()== QDialog::Accepted){
+          bindDataOnView();
+      }
+
+}
+
+
+/**
+ * @brief export
+ */
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString fileName;
+    fileName = QFileDialog::getSaveFileName(this,
+        QObject::tr("Save resources"), "/home/Desktop/Resource.xml", QObject::tr("XML Files (*.xml)"));
+
+    if (!fileName.isNull())
+    {
+        this->saveResource(fileName);
+    }else{
+
     }
 }

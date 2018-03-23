@@ -122,8 +122,8 @@ void Planning::getPlanning(QTextStream &out)
     for(m_it = m_r.begin();m_it!=m_r.end();++m_it)
     {
         // for each resource
-        out<<"Resource:"<<m_it->getRes_id()<<", "<<m_it->getRes_firstname()+" "+m_it->getRes_lastname()<<endl;
-        out<<"Time\t"<<endl;
+        out<<"Resource:"<<m_it->getRes_id()<<", "<<m_it->getRes_firstname()+" "+m_it->getRes_lastname()<<"\n";
+        out<<"Time\t"<<"\n";
         int start = 7;
         for(int i = 0;i<50;i++)
         {
@@ -132,11 +132,11 @@ void Planning::getPlanning(QTextStream &out)
             if(m_it->resourceRDVInfo.availability[i]!=0)
             {
                 out<<QObject::tr("%1:%2, Client %3, duration: %4").arg(start).arg((i*15)%60).arg(m_it->resourceRDVInfo.availability[i]).arg(m_it->resourceRDVInfo.timeLine[i]);
-                out<<endl;
+                out<<"\n";
             }
 
         }
-        out<<"================"<<endl;
+        out<<"================"<<"\n";
     }
 }
 

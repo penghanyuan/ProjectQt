@@ -20,6 +20,7 @@ bool ClientDAO::insertClient(Client &cl){
                   "(Nom, Prenom, Adresse, Ville, CP, Commentaire, Tel, DateRdv, DureeRdv, Priorite)"
                   "VALUES ( :Nom, :Prenom, :Adresse, :Ville, :CP, :Commentaire, :Tel, :DateRdv, :DureeRdv, :Priorite)");
 
+
     query.bindValue(":Nom", cl.getCli_lastname());
     query.bindValue(":Prenom", cl.getCli_firstname());
     query.bindValue(":Adresse", cl.getCli_address());

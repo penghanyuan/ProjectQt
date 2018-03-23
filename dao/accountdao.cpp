@@ -1,5 +1,6 @@
 #include "accountdao.h"
 #include "dao/resourcedao.h"
+
 AccountDAO::AccountDAO()
 {
     ConnectionSQL *connection = ConnectionSQL::getConnection();
@@ -118,6 +119,7 @@ bool AccountDAO::insertAccount(Account acc){
         QString strSqlInsertText("INSERT INTO TCompte"
                                  "(IdRessource, Login, Mdp) "
                                  "VALUES (:IdRessource, :Login, :Mdp)");
+
         query.prepare(strSqlInsertText);
         query.bindValue(":IdRessource", acc.getAcc_resource().getRes_id());
         query.bindValue(":Login", acc.getAcc_username());

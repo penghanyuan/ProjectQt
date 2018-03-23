@@ -52,6 +52,10 @@ private slots:
 
     void on_s_id_textChanged(const QString &arg1);
 
+    void on_actionAdd_Divers_triggered();
+
+    void on_pushButton_2_clicked();
+
 private:
     ResourcesController resourceController;
     TypeController typeController;
@@ -77,6 +81,8 @@ private:
     void showClientData();
     void searchByLastnameOrFirstnameOrId();
     void searchByTime();
+
+    void saveResource(QString filename);
 };
 
 #endif // MAINWINDOW_H

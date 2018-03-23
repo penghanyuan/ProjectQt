@@ -16,6 +16,7 @@ public:
     bool insertType(Type &type);
     Type selectTypeById(int id);
     bool selectAllType(vector<Type>& types);
+    Type selectTypeByName(QString name);
 };
 
 #endif // TYPEDAO_H

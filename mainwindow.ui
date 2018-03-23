@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gestion de RDV</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QFormLayout" name="formLayout">
@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -45,6 +45,19 @@
              <widget class="QPushButton" name="btn_delete">
               <property name="text">
                <string>Delete</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Export</string>
               </property>
              </widget>
             </item>
@@ -212,6 +225,9 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="text">
+               <string>son prenom</string>
+              </property>
              </widget>
             </item>
             <item row="0" column="0">
@@ -286,13 +302,6 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="planning_search">
-             <property name="text">
-              <string>Search</string>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_3">
              <property name="text">
               <string>Save File</string>
@@ -340,6 +349,7 @@
      </property>
      <addaction name="actionAdd_Client"/>
      <addaction name="actionAdd_Person"/>
+     <addaction name="actionAdd_Divers"/>
     </widget>
     <addaction name="menuAdd"/>
     <addaction name="separator"/>
@@ -416,6 +426,11 @@
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAdd_Divers">
+   <property name="text">
+    <string>Add Divers</string>
    </property>
   </action>
  </widget>

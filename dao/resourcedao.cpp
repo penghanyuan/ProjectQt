@@ -19,6 +19,7 @@ bool ResourceDAO::insertResource(Resource res){
     QString strSqlInsertText("INSERT INTO TRessource"
                              "(Nom, Prenom, IdType) "
                              "VALUES (:Nom, :Prenom, :IdType)");
+
     query.prepare(strSqlInsertText);
     query.bindValue(":Nom", res.getRes_lastname());
     query.bindValue(":Prenom", res.getRes_firstname());

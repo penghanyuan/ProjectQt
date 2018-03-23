@@ -120,6 +120,16 @@ void Client::setCli_tel(int value)
     cli_tel = value;
 }
 
+QString Client::getRemarque() const
+{
+    return remarque;
+}
+
+void Client::setRemarque(const QString &value)
+{
+    remarque = value;
+}
+
 Client::Client()
 {
     
